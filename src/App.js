@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {BrowserRouter, Route, Link } from 'react-router-dom'
+import {BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 import DisplayRecipePage from './DisplayRecipePage'
 import CleaningPage from './CleaningPage'
 import WelcomePage from './WelcomePage'
@@ -10,6 +10,7 @@ import PersonalCarePage from './PersonalCarePage'
 import NewRecipeView from './NewRecipeView'
 import NoMatch from './NoMatch'
 import NavBar from './components/NavBar.js'
+
 
 const App = () => {
   // const [page, setPage] = useState("home")
@@ -26,15 +27,17 @@ const App = () => {
           <Link to="/myrecipes">My Recipes</Link>
           <Link to="/newrecipe">New Recipe</Link> */}
         </NavBar>
-        <Route exact path = "/" component={WelcomePage} />
-        <Route exact path = "/skincare" component={SkincarePage} />
-        <Route exact path = "/cleaning" component={CleaningPage} />
-        <Route exact path = "/homecare" component={HomeCarePage} />
-        <Route exact path = "/personalcare" component={PersonalCarePage} />
-        <Route exact path = "/display" component={DisplayRecipePage} />
-        <Route exact path = "/myrecipes" component={MyRecipesPage} />
-        <Route exact path = "/newrecipe" component={NewRecipeView} />
-        <Route component={NoMatch} />
+        <Switch>
+          <Route exact path = "/" component={WelcomePage} />
+          <Route exact path = "/skincare" component={SkincarePage} />
+          <Route exact path = "/cleaning" component={CleaningPage} />
+          <Route exact path = "/homecare" component={HomeCarePage} />
+          <Route exact path = "/personalcare" component={PersonalCarePage} />
+          <Route exact path = "/display" component={DisplayRecipePage} />
+          <Route exact path = "/myrecipes" component={MyRecipesPage} />
+          <Route exact path = "/newrecipe" component={NewRecipeView} />
+          <Route component={NoMatch} />
+        </Switch>
       </BrowserRouter>
     </div>
   )
