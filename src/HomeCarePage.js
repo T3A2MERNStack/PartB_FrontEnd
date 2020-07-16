@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function SkincarePage() {
+export default function HomeCarePage() {
     return (
         <div>
             <h1>Home Care Recipes</h1>
