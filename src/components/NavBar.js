@@ -17,67 +17,40 @@ const Styles = styled.div`
 `
 
 const NavBar = () => (
-    <Styles>
-      <Navbar bg="dark" expand="lg">
-        <Navbar.Brand href="/">EcoA</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto">
-            <Nav.Item>
-          
-                <Link to="/">Welcome</Link>
-           
-            </Nav.Item>
-            <Nav.Item>
-              
-                <Link to="/skincare">Skincare Recipes</Link>
-              
-            </Nav.Item>
-            <Nav.Item>
-         
-                <Link to="/cleaning">Cleaning Reciptes</Link>
-  
-            </Nav.Item>
-            <Nav.Item>
-        
-                <Link to="/cleaning">Cleaning Recipes</Link>
-          
-            </Nav.Item>
-            <Nav.Item>
-          
-                <Link to="/homecare">Home Care Recipes</Link>
-         
-            </Nav.Item>
-            <Nav.Item>
-     
-                <Link to="/personalcare">Personal Care Recipes</Link>
-           
-            </Nav.Item>
-            <Nav.Item>
-          
-                <Link to="/display">Recipe Name</Link>
-         
-            </Nav.Item>
-            <Nav.Item>
-        
-                <Link to="/newrecipe">New Recipe</Link>
-          
-            </Nav.Item>
-            <Nav.Item>
-        
-              <Link to="/myrecipes">My Recipes</Link>
-      
-            </Nav.Item>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-    </Styles >
+  <Styles>
+    <Navbar bg="dark" expand="lg">
+      <Navbar.Brand href="/">EcoA</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="ml-auto">
+          <Nav.Item>
+            <Nav.Link href="/">Welcome</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="/skincare">Skincare Recipes</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="/cleaning">Cleaning Recipes</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="/homecare">Home Care Recipes</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="/personalcare">Personal Care Recipes</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="/display">Recipe Name</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="/newrecipe">New Recipe</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="/myrecipes">My Recipes</Nav.Link>
+          </Nav.Item>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  </Styles >
 )
- 
+
 export default NavBar
-          
-          
-          
-          
-          
-           
