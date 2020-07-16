@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function SkincarePage() {
+export default function MyRecipePage() {
     return (
         <div>
             <h1>List of Users Recipes</h1>
