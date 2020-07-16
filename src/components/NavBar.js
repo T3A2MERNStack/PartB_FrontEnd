@@ -24,49 +24,28 @@ const NavBar = () => (
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
             <Nav.Item>
-              <Nav.Link>
-                <Link to="/">Welcome</Link>
-              </Nav.Link>
+              <Nav.Link href="/">Welcome</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link>
-                <Link to="/skincare">Skincare Recipes</Link>
-              </Nav.Link>
+              <Nav.Link href="/skincare">Skincare Recipes</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link>
-                <Link to="/cleaning">Cleaning Reciptes</Link>
-              </Nav.Link>
+              <Nav.Link href="/cleaning">Cleaning Recipes</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link>
-                <Link to="/cleaning">Cleaning Recipes</Link>
-              </Nav.Link>
+              <Nav.Link href="/homecare">Home Care Recipes</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link>
-                <Link to="/homecare">Home Care Recipes</Link>
-              </Nav.Link>
+              <Nav.Link href="/personalcare">Personal Care Recipes</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link>
-                <Link to="/personalcare">Personal Care Recipes</Link>
-              </Nav.Link>
+              <Nav.Link href="/display">Recipe Name</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link>
-                <Link to="/display">Recipe Name</Link>
-              </Nav.Link>
+              <Nav.Link href="/newrecipe">New Recipe</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link>
-                <Link to="/newrecipe">New Recipe</Link>
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link>
-              <Link to="/myrecipes">My Recipes</Link>
-              </Nav.Link>
+              <Nav.Link href="/myrecipes">My Recipes</Nav.Link>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
