@@ -18,14 +18,14 @@ const App = () => {
     <div >
       <BrowserRouter>
         <NavBar>
-          {/* <Link to="/">Welcome</Link>
+          <Link to="/">Welcome</Link>
           <Link to="/skincare">Skincare Recipes</Link>
           <Link to="/cleaning">Cleaning Reciptes</Link>
           <Link to="/homecare">Home Care Recipes</Link>
           <Link to="/personalcare">Personal Care Recipes</Link>
           <Link to="/display">Recipe Name</Link>
           <Link to="/myrecipes">My Recipes</Link>
-          <Link to="/newrecipe">New Recipe</Link> */}
+          <Link to="/newrecipe">New Recipe</Link>
         </NavBar>
         <Switch>
           <Route exact path = "/" component={WelcomePage} />
