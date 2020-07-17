@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
+import { useHistory } from 'react-router-dom'
 
 export default function Home(props) {
     const [recipe, getRecipe] = useState("")
+    const history = useHistory();
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -19,14 +21,15 @@ export default function Home(props) {
         .catch(err => console.log(err))
     },[])
 
+    
+
     return (
         <div>
             <h1> Welcome to EcoA - your resource for zero waste home products</h1>
             <form onSubmit={onSubmit}>
                 <button>Add test recipe</button>
             </form>
-            <p>{recipe}</p>
-            {console.log(recipe)}
+            {/* {console.log(recipe)} */}
         </div>
     )
 }

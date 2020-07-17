@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function NewRecipeView() {
     return (
         <div>
-            <h1> Add recipe</h1>
+           hello
         </div>
     )
 }
