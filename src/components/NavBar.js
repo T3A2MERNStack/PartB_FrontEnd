@@ -45,19 +45,17 @@ const NavBar = () => {
                 <Nav.Link href="/">Welcome</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/skincare">Skincare Recipes</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/cleaning">Cleaning Recipes</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/homecare">Home Care Recipes</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/personalcare">Personal Care Recipes</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/display">Recipe Name</Nav.Link>
+                <div class="dropdown">
+                  <Nav.Link class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Recipe Category
+                  </Nav.Link>
+                  <div class="dropdown-menu" aria-labelledby="Recipe Category">
+                    <Nav.Link class="dropdown-item" href="/skincare">Skincare</Nav.Link>
+                    <Nav.Link class="dropdown-item" href="/cleaning">Cleaning</Nav.Link>
+                    <Nav.Link class="dropdown-item" href="/homecare">Home Care</Nav.Link>
+                    <Nav.Link class="dropdown-item" href="/personalcare">Personal Care</Nav.Link>
+                  </div>
+                </div>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link href="/newrecipe">New Recipe</Nav.Link>
