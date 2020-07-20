@@ -3,7 +3,16 @@ import Axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
+import styled from 'styled-components'
 
+const Styles = styled.div`
+    .catbox {
+        background-color: 'red', 
+        max-width : '40%', 
+        margin-left : '5%', 
+        margin-right : '5%'
+    }
+`
 export default function Home(props) {
     const [recipe, getRecipe] = useState("")
     const history = useHistory();
@@ -28,7 +37,7 @@ export default function Home(props) {
     return (
        <>
         <div>
-            <Jumbotron >
+            <Jumbotron style={{marginTop : '30px'}}>
                 <Container >
                     <h1>Welcome to EcoA</h1>
                     <p>
@@ -40,15 +49,27 @@ export default function Home(props) {
             <form onSubmit={onSubmit}>
                 <button>Add test recipe</button>
             </form>
-            <div class="card w-1">
-        <div class="card-body">
-            <h5 class="card-title">Skincare</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/skincare" class="card-link">Card link</a>
+        <Styles>
+        <div class="container" style={{backgroundColor: 'grey'}}>
+            <div class="row">
+                <div class="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', height : '300px'}}>
+                    <h2>Skincare</h2>
+                    
+                </div>
+                <div class="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', height : '300px'}}>
+                    <h2>Cleaning</h2>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', marginTop : '40px'}}>
+                    <h2>Personal Care</h2>
+                </div>
+                <div class="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', marginTop : '40px'}}>
+                    <h2>Home Care</h2>
+                </div>
+            </div> 
         </div>
-        </div>
-            {/* {console.log(recipe)} */}
+        </Styles>   
         </>  
     )
 }
