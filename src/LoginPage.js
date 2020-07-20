@@ -24,14 +24,18 @@ export default function LoginPageView() {
     }
 
     const onSubmit = (e) => {
-        const user = {email, password}
+        const user = { email, password }
 
         e.preventDefault() //prevents the page from reloading
         Axios.post('http://localhost:4000/users/login', user)
             .then(res => { 
-                dispatch({type: "setLogin" , data: true })
                 console.log("logged in")
+                console.log(res.data.user)
+                dispatch({type: "setLogin" , data: true })
                 history.push("/")
+                // not working
+                // console.log(res.session.passport.user)
+                // console.log(res.response.data.user)
                 }
             )
             .catch(error =>  {
@@ -40,6 +44,7 @@ export default function LoginPageView() {
                     // that falls out of the range of 2xx
                     setErrorMessage(error.response.data.error)
                     console.log(error.response.data.error)
+                    // console.log(error.response.data.user)
                   }
                 history.push("/login")
             })
