@@ -7,15 +7,14 @@ import StateContext from '../store'
 
 const Styles = styled.div`
   .navbar {
-    background-color: #222;
+    background-color: #397c5f
   }
   a, .navbar-brand, .navbar-nav .nav-link {
-    color: #bbb;
     &:hover {
-      color: white;
+      color: white
     }
   }
-
+  }
 `
 
 function LoggedIn() {
@@ -31,12 +30,10 @@ function LoggedIn() {
   }
 }
 
-
-
 const NavBar = () => {
   return (
       <Styles>
-        <Navbar bg="dark" expand="lg">
+        <Navbar bg="#397c5f" expand="lg">
           <Navbar.Brand href="/">EcoA</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
