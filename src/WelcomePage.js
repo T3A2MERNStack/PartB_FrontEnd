@@ -28,7 +28,7 @@ export default function Home(props) {
 
     return (
        <>
-        <div class="text-center">
+        <div className="text-center">
             <Jumbotron style={{marginTop : '30px'}}>
                 <Container>
                     <h1>Welcome to EcoA</h1>
@@ -42,21 +42,21 @@ export default function Home(props) {
             <form onSubmit={onSubmit}>
                 <button>Add test recipe</button>
             </form>
-        <div class="container" style={{backgroundColor: 'grey'}}>
-            <div class="row">
-                <div class="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', minHeight : '200px'}}>
+        <div className="container" style={{backgroundColor: 'grey'}}>
+            <div className="row">
+                <div className="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', minHeight : '200px'}}>
                     <h2>Skincare</h2>
                     
                 </div>
-                <div class="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', minHeight : '200px'}}>
+                <div className="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', minHeight : '200px'}}>
                     <h2>Cleaning</h2>
                 </div>
             </div> 
-            <div class="row">
-                <div class="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', marginTop : '40px', minHeight : '200px'}}>
+            <div className="row">
+                <div className="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', marginTop : '40px', minHeight : '200px'}}>
                     <h2>Personal Care</h2>
                 </div>
-                <div class="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', marginTop : '40px', minHeight : '200px'}}>
+                <div className="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', marginTop : '40px', minHeight : '200px'}}>
                     <h2>Home Care</h2>
                 </div>
             </div> 
