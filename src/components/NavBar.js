@@ -42,15 +42,15 @@ const NavBar = () => {
                 <Nav.Link href="/">Welcome</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <div class="dropdown">
-                  <Nav.Link class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div className="dropdown">
+                  <Nav.Link className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Recipe Category
                   </Nav.Link>
-                  <div class="dropdown-menu" aria-labelledby="Recipe Category">
-                    <Nav.Link class="dropdown-item" href="/skincare">Skincare</Nav.Link>
-                    <Nav.Link class="dropdown-item" href="/cleaning">Cleaning</Nav.Link>
-                    <Nav.Link class="dropdown-item" href="/homecare">Home Care</Nav.Link>
-                    <Nav.Link class="dropdown-item" href="/personalcare">Personal Care</Nav.Link>
+                  <div className="dropdown-menu" aria-labelledby="Recipe Category">
+                    <Nav.Link className="dropdown-item" href="/skincare">Skincare</Nav.Link>
+                    <Nav.Link className="dropdown-item" href="/cleaning">Cleaning</Nav.Link>
+                    <Nav.Link className="dropdown-item" href="/homecare">Home Care</Nav.Link>
+                    <Nav.Link className="dropdown-item" href="/personalcare">Personal Care</Nav.Link>
                   </div>
                 </div>
               </Nav.Item>
