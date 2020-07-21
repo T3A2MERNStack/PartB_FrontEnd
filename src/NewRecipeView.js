@@ -1,15 +1,37 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './App.css'
 
 class NewRecipeView extends React.Component{
     state = {
       imageUrl: null,
       imageAlt: null,
     }
-  
+    
     render() {
       const { imageUrl, imageAlt } = this.state;
-  
+      this.handleImageUpload = () => {
+        const { files } = document.querySelector('input[type="file"]')
+        const formData = new FormData();
+        formData.append('file', files[0]);
+        // replace this with your upload preset name
+        formData.append('upload_preset', 'hpx42bqit');
+        const options = {
+        method: 'POST',
+        body: formData,
+        };
+
+// replace cloudname with your Cloudinary cloud_name
+return fetch('https://api.cloudinary.com/v1_1/highpitchit/image/upload', options)
+  .then(res => res.json())
+  .then(res => {
+    this.setState({
+      imageUrl: res.secure_url,
+      imageAlt: `An image of ${res.original_filename}`
+    })
+  })
+  .catch(err => console.log(err));
+      }
       return (
         <main className="NewRecipeView">
           <section className="left-side">
