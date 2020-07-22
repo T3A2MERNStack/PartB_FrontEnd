@@ -1,7 +1,11 @@
 import React, { useState,  useContext, useEffect } from 'react'
 import { Link,  useHistory } from 'react-router-dom'
 import Axios from 'axios'
+<<<<<<< HEAD:src/LoginPage.js
 import StateContext from './store'
+=======
+import StateContext from '../store'
+>>>>>>> 22ef72755232f149a1200bc108a8f4c1822ec875:src/components/LoginPage.js
 
 export default function LoginPageView() {
     const history = useHistory();
