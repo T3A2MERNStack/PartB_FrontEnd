@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import Axios from 'axios'
-import { useHistory, Route, BrowserRouter, Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+// import Axios from 'axios'
+import { Link } from 'react-router-dom'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
-import styled from 'styled-components'
-import LoginPageView from './LoginPage'
+import StateContext from './store'
+// import styled from 'styled-components'
+// import LoginPageView from './LoginPage'
 
 export default function Home(props) {
     // const [recipe, getRecipe] = useState("")
@@ -25,10 +26,18 @@ export default function Home(props) {
     //     .catch(err => console.log(err))
     // },[])
 
-    
+    const { store, dispatch } = useContext(StateContext)
+    const { user } = store
 
     return (
-       <>
+        <>
+            { user ? (
+                <>
+                    <h2>You have already Logged, {user.username} </h2>
+                    {/* <button onClick={handleLogOut}>Log Out</button> */}
+                </>
+            ) : (null) 
+            }
         <div className="text-center">
             <Jumbotron style={{marginTop : '30px'}}>
                 <Container>
@@ -39,11 +48,6 @@ export default function Home(props) {
                 </Container>
             </Jumbotron>
         </div>
-        {/* <Link to="/signup">Sign up</Link> */}
-        <Link to="/login">Log in</Link>
-            {/* <form onSubmit={onSubmit}>
-                <button>Add test recipe</button>
-            </form> */}
         <div className="container" style={{backgroundColor: 'grey'}}>
             <div className="row">
                 <div className="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', minHeight : '200px'}}>

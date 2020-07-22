@@ -4,53 +4,44 @@ import Axios from 'axios'
 
 export default function SignupPageView() {
     const history = useHistory();
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [user, setUser] = useState(false)
+    const [errorMessage, setErrorMessage] = useState(false)
 
-    const onChange = (e) => {
-        switch (e.target.name) {
-            case "name": 
-                setName(e.target.value)
-                break
-            case "email":
-                setEmail(e.target.value)
-                break
-            case "password":
-                setPassword(e.target.value)
-                break
-        }
-    }
-
-    const onSubmit = (e) => {
-        const user = { name, email, password }
-        e.preventDefault() //prevents the page from reloading
-        console.log(user)
-        Axios.post('http://localhost:4000/users/register', user)
-        .then(res => {if (res.status == 200){
-            history.push("/")
-        }
+    const handleSignUp = (e) => {
+        e.preventDefault()
+        Axios.post('http://localhost:4000/users/register' , {
+          username: e.target[0].value,
+          email: e.target[1].value,
+          password: e.target[2].value
+        }, {
+            withCredentials: true
         })
-        .catch(err =>  history.push("/signup"))
+        .then(res => {
+          console.log(res)
+          if (res.data.fail) {
+            setErrorMessage(res.data.fail)
+          } else {
+            setUser(res.data)
+            history.push('/')
+            console.log(res.data)
+          }
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
     return (
         <div>
             <h1>Sign up form</h1>
-            <form onSubmit={onSubmit}>
-                <div>
-                    <label htmlFor="name">Name</label>
-                    <input onChange={onChange} value={name} type="text" id="name" name="name" required></input>
-                </div>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input onChange={onChange} value={email} type="email" id="email" name="email" required></input>
-                </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input onChange={onChange} value={password} type="password" id="password" name="password" required></input>
-                </div>
-                <button>Sign up</button>
+            <form onSubmit={handleSignUp}>
+                        <label>Username</label>
+                        <input />
+                        <label>Email</label>
+                        <input />
+                        <label>Password</label>
+                        <input />
+                        <button>Sign up</button>
                 <Link to="/login">Log in</Link>
             </form>
         </div>

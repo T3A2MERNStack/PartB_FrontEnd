@@ -1,5 +1,5 @@
-import React, { useState, useReducer } from 'react'
-import {BrowserRouter, Route, Link, Switch } from 'react-router-dom'
+import React, { useReducer } from 'react'
+import {BrowserRouter, Route, Switch } from 'react-router-dom'
 import DisplayRecipePage from './DisplayRecipePage'
 import CleaningPage from './CleaningPage'
 import WelcomePage from './WelcomePage'
@@ -17,7 +17,7 @@ import StateContext from './store'
 
 
 const App = () => {
-  const [store, dispatch] = useReducer(stateReducer, {login: false} )
+  const [store, dispatch] = useReducer(stateReducer, {login: false, user: false} )
   return (
     <div >
       <StateContext.Provider value={{ store , dispatch}}>
