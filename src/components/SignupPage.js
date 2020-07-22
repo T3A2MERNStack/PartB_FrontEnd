@@ -1,4 +1,4 @@
-import React, { useState , useEffect ,useContext} from 'react'
+import React, { useState ,useContext} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import Axios from 'axios'
 import StateContext from '../store'
@@ -7,8 +7,7 @@ import StateContext from '../store'
 export default function SignupPageView() {
     const history = useHistory();
     const [errorMessage, setErrorMessage] = useState(false)
-    const { store, dispatch } = useContext(StateContext)
-    const { user } = store
+    const { dispatch } = useContext(StateContext)
 
     const handleSignUp = (e) => {
         e.preventDefault()

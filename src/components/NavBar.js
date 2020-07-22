@@ -21,7 +21,6 @@ const Styles = styled.div`
 
 function LoggedIn() {
   const {store, dispatch} = useContext(StateContext)
-  const { user } = store
   const history = useHistory();
 
   useEffect(() => {

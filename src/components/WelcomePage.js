@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 // import Axios from 'axios'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
 import StateContext from '../store'
@@ -26,7 +26,7 @@ export default function Home(props) {
     //     .catch(err => console.log(err))
     // },[])
 
-    const { store, dispatch } = useContext(StateContext)
+    const { store } = useContext(StateContext)
     const { user } = store
 
     return (
