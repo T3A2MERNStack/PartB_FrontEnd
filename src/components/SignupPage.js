@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect ,useContext} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import Axios from 'axios'
+import StateContext from '../store'
+
 
 export default function SignupPageView() {
     const history = useHistory();
-    const [user, setUser] = useState(false)
     const [errorMessage, setErrorMessage] = useState(false)
+    const { store, dispatch } = useContext(StateContext)
+    const { user } = store
 
     const handleSignUp = (e) => {
         e.preventDefault()
@@ -17,17 +20,15 @@ export default function SignupPageView() {
             withCredentials: true
         })
         .then(res => {
-          console.log(res)
           if (res.data.fail) {
             setErrorMessage(res.data.fail)
           } else {
-            setUser(res.data)
+            dispatch({type: "setUser", data: res.data })
             history.push('/')
-            console.log(res.data)
           }
         })
         .catch(err => {
-            console.log(err)
+            setErrorMessage(err)
         })
     }
 
@@ -37,13 +38,20 @@ export default function SignupPageView() {
             <form onSubmit={handleSignUp}>
                         <label>Username</label>
                         <input />
-                        <label>Email</label>
+                        <label type="email">Email</label>
                         <input />
                         <label>Password</label>
                         <input />
                         <button>Sign up</button>
                 <Link to="/login">Log in</Link>
             </form>
+            {errorMessage ? (
+              <div>
+                  {/* <h4>{errorMessage.name}</h4> */}
+                  <p>{errorMessage.message}</p>
+              </div>
+            ) : (null)}
         </div>
+
     )
 }

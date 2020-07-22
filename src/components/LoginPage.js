@@ -77,7 +77,7 @@ export default function LoginPageView() {
                     </form>
                     {errorMessage ? (
                     <div>
-                        <h4>{errorMessage.name}</h4>
+                        {/* <h4>{errorMessage.name}</h4> */}
                         <p>{errorMessage.message}</p>
                     </div>
                     ) : (null)}
