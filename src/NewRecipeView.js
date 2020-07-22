@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './App.css'
+import {Image} from 'cloudinary-react'
 
 class NewRecipeView extends React.Component{
     state = {
