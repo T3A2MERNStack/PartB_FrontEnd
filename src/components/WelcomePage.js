@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
-import StateContext from './store'
+import StateContext from '../store'
 // import styled from 'styled-components'
 // import LoginPageView from './LoginPage'
 
