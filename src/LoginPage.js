@@ -11,7 +11,9 @@ export default function LoginPageView() {
     
     useEffect(() => {
         // Update the document title using the browser API
-        Axios.get('http://localhost:4000/users/me')
+        Axios.get('http://localhost:4000/users/me', {
+            withCredentials: true
+          })
             .then(res => {
                 console.log(res)
                 setUser(res.data)
@@ -43,7 +45,7 @@ export default function LoginPageView() {
           username: e.target[0].value,
           password: e.target[1].value
         }, {
-          withCredentials: true
+            withCredentials: true
         })
         .then(res => {
           console.log(res)
@@ -64,7 +66,7 @@ export default function LoginPageView() {
         Axios.post('http://localhost:4000/users/login', {
         username: e.target[0].value,
         password: e.target[1].value },
-       {credentials: true})
+       {withCredentials: true})
             .then(res => { 
                 // console.log("logged in")
                 // dispatch({type: "setLogin" , data: true })
