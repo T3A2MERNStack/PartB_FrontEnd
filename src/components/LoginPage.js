@@ -30,15 +30,13 @@ export default function LoginPageView() {
         password: e.target[1].value },
        {withCredentials: true})
             .then(res => { 
-                // console.log("logged in")
-                // dispatch({type: "setLogin" , data: true })
                 dispatch({type: "setUser", data: res.data })
                 console.log(user)
                 history.push('/')
                 }
             )
             .catch(error =>  {
-                setErrorMessage(error)
+                setErrorMessage(error.response.data.message)
             })
 
 
@@ -78,7 +76,7 @@ export default function LoginPageView() {
                     {errorMessage ? (
                     <div>
                         {/* <h4>{errorMessage.name}</h4> */}
-                        <p>{errorMessage.message}</p>
+                        <p>{errorMessage}</p>
                     </div>
                     ) : (null)}
                 </>

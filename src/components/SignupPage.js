@@ -38,8 +38,8 @@ export default function SignupPageView() {
             <form onSubmit={handleSignUp}>
                         <label>Username</label>
                         <input />
-                        <label type="email">Email</label>
-                        <input />
+                        <label>Email</label>
+                        <input type="email" required />
                         <label>Password</label>
                         <input />
                         <button>Sign up</button>
