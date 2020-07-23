@@ -48,7 +48,11 @@ const NewRecipeFormView = () => {
                         nextStep1 && (
                             <div className="form-group">
                                 <label>Step 2</label>
+<<<<<<< HEAD
                                 <input name="steps[1]" key="step2" ref={register({ required: true })} />
+=======
+                                <input name="steps[1]" key="step2" ref={register()} />
+>>>>>>> 862dc7cc1486e093df69a16f42afdf25c5845923
                             </div>
                         )
                     }
@@ -56,7 +60,11 @@ const NewRecipeFormView = () => {
                         nextStep2 && (
                             <div className="form-group">
                                 <label>Step 3</label>
+<<<<<<< HEAD
                                 <input name="steps[2]" key="step2" ref={register({ required: true })} />
+=======
+                                <input name="steps[2]" key="step2" ref={register()} />
+>>>>>>> 862dc7cc1486e093df69a16f42afdf25c5845923
                             </div>
                         )
                     }
@@ -64,7 +72,11 @@ const NewRecipeFormView = () => {
                         nextStep3 && (
                             <div className="form-group">
                                 <label>Step 4</label>
+<<<<<<< HEAD
                                 <input name="steps[3]" key="step4" ref={register({ required: true })} />
+=======
+                                <input name="steps[3]" key="step4" ref={register()} />
+>>>>>>> 862dc7cc1486e093df69a16f42afdf25c5845923
                             </div>
                         )
                     }
@@ -72,7 +84,11 @@ const NewRecipeFormView = () => {
                         nextStep4 && (
                             <div className="form-group">
                                 <label>Step 5</label>
+<<<<<<< HEAD
                                 <input name="steps[4]" key="step5" ref={register({ required: true })} />
+=======
+                                <input name="steps[4]" key="step5" ref={register()} />
+>>>>>>> 862dc7cc1486e093df69a16f42afdf25c5845923
                             </div>
                         )
                     }
