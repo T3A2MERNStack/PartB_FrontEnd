@@ -1,13 +1,13 @@
-import React, { useState, useReducer } from 'react'
-import {BrowserRouter, Route, Link, Switch } from 'react-router-dom'
-import DisplayRecipePage from './components/DisplayRecipePage'
-import CleaningPage from './components/CleaningPage'
-import WelcomePage from './components/WelcomePage'
-import SkincarePage from './components/SkincarePage'
-import HomeCarePage from './components/HomeCarePage'
-import MyRecipesPage from './components/MyRecipesPage'
-import PersonalCarePage from './components/PersonalCarePage'
-import NewRecipeView from './components/NewRecipeView'
+import React, { useReducer } from 'react'
+import {BrowserRouter, Route, Switch } from 'react-router-dom'
+import DisplayRecipePage from './components/DisplayRecipePage'	
+import CleaningPage from './components/CleaningPage'	
+import WelcomePage from './components/WelcomePage'	
+import SkincarePage from './components/SkincarePage'	
+import HomeCarePage from './components/HomeCarePage'	
+import MyRecipesPage from './components/MyRecipesPage'	
+import PersonalCarePage from './components/PersonalCarePage'	
+import NewRecipeView from './components/NewRecipeView'	
 import NoMatch from './components/NoMatch'
 import NavBar from './components/NavBar.js'
 import SignupPageView from './components/SignupPage'
@@ -17,7 +17,7 @@ import StateContext from './store'
 
 
 const App = () => {
-  const [store, dispatch] = useReducer(stateReducer, {login: false} )
+  const [store, dispatch] = useReducer(stateReducer, {login: false, user: false} )
   return (
     <div >
       <StateContext.Provider value={{ store , dispatch}}>

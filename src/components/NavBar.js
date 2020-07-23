@@ -1,9 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
-import {BrowserRouter, Route, Link } from 'react-router-dom'
+// import {BrowserRouter, Route, Link } from 'react-router-dom'
 import StateContext from '../store'
+import Axios from 'axios'
 
 const Styles = styled.div`
   .navbar {
@@ -19,15 +21,57 @@ const Styles = styled.div`
 
 function LoggedIn() {
   const {store, dispatch} = useContext(StateContext)
-  if (!store.login) {
+  const history = useHistory();
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    Axios.get('https://sensationnel-madame-06327.herokuapp.com/users/me', {
+        withCredentials: true
+      })
+        .then(res => {
+            console.log(res)
+            // setUser(res.data)
+            // I am not getting anything back from (res)
+            // dispatch({type: "setLogin" , data: true })
+            dispatch({type: "setUser", data: res.data })
+        })
+        .catch(error => {
+            if(error) {
+            console.log(error.message)
+          }})
+  },[]);
+
+  const handleLogOut = (e) => {
+    e.preventDefault()
+    Axios.get('https://sensationnel-madame-06327.herokuapp.com/users/logout', {
+      withCredentials: true
+    })
+    .then(() => {
+      dispatch({type: "setUser", data: false })
+      history.push('/')
+    })
+  }
+
+  if (!store.user) {
     return (
-    <Nav.Item>
-      <Nav.Link href="/login">Log in</Nav.Link>
-    </Nav.Item>
+      <>
+        <Nav.Item>
+          <Nav.Link href="/login">Log in</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/signup">Sign up</Nav.Link>
+        </Nav.Item>
+      </>
     )
   } else {
-    return null
+    return (
+      <>
+        <button onClick={handleLogOut}>Log Out</button>
+      </>
+    )
   }
+
+
 }
 
 const NavBar = () => {
@@ -59,9 +103,6 @@ const NavBar = () => {
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link href="/myrecipes">My Recipes</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/signup">Sign up</Nav.Link>
               </Nav.Item>
               <LoggedIn  />
             </Nav>

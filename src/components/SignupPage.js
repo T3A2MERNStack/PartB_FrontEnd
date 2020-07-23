@@ -1,58 +1,57 @@
-import React, { useState } from 'react'
+import React, { useState ,useContext} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import Axios from 'axios'
+import StateContext from '../store'
+
 
 export default function SignupPageView() {
     const history = useHistory();
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [errorMessage, setErrorMessage] = useState(false)
+    const { dispatch } = useContext(StateContext)
+    const url = "https://sensationnel-madame-06327.herokuapp.com"
 
-    const onChange = (e) => {
-        switch (e.target.name) {
-            case "name": 
-                setName(e.target.value)
-                break
-            case "email":
-                setEmail(e.target.value)
-                break
-            case "password":
-                setPassword(e.target.value)
-                break
-        }
-    }
-
-    const onSubmit = (e) => {
-        const user = { name, email, password }
-        e.preventDefault() //prevents the page from reloading
-        console.log(user)
-        Axios.post('http://localhost:4000/users/register', user)
-        .then(res => {if (res.status == 200){
-            history.push("/")
-        }
+    const handleSignUp = (e) => {
+        e.preventDefault()
+        Axios.post(`${url}/users/register` , {
+          username: e.target[0].value,
+          email: e.target[1].value,
+          password: e.target[2].value
+        }, {
+            withCredentials: true
         })
-        .catch(err =>  history.push("/signup"))
+        .then(res => {
+          if (res.data.fail) {
+            setErrorMessage(res.data.fail)
+          } else {
+            dispatch({type: "setUser", data: res.data })
+            history.push('/')
+          }
+        })
+        .catch(err => {
+            setErrorMessage(err)
+        })
     }
 
     return (
         <div>
             <h1>Sign up form</h1>
-            <form onSubmit={onSubmit}>
-                <div>
-                    <label htmlFor="name">Name</label>
-                    <input onChange={onChange} value={name} type="text" id="name" name="name" required></input>
-                </div>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input onChange={onChange} value={email} type="email" id="email" name="email" required></input>
-                </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input onChange={onChange} value={password} type="password" id="password" name="password" required></input>
-                </div>
-                <button>Sign up</button>
+            <form onSubmit={handleSignUp}>
+                        <label>Username</label>
+                        <input />
+                        <label>Email</label>
+                        <input type="email" required />
+                        <label>Password</label>
+                        <input />
+                        <button>Sign up</button>
                 <Link to="/login">Log in</Link>
             </form>
+            {errorMessage ? (
+              <div>
+                  {/* <h4>{errorMessage.name}</h4> */}
+                  <p>{errorMessage.message}</p>
+              </div>
+            ) : (null)}
         </div>
+
     )
 }
