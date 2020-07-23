@@ -8,10 +8,11 @@ export default function SignupPageView() {
     const history = useHistory();
     const [errorMessage, setErrorMessage] = useState(false)
     const { dispatch } = useContext(StateContext)
+    const url = "https://sensationnel-madame-06327.herokuapp.com"
 
     const handleSignUp = (e) => {
         e.preventDefault()
-        Axios.post('http://localhost:4000/users/register' , {
+        Axios.post(`${url}/users/register` , {
           username: e.target[0].value,
           email: e.target[1].value,
           password: e.target[2].value

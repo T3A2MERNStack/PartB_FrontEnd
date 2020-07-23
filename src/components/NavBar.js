@@ -25,7 +25,7 @@ function LoggedIn() {
 
   useEffect(() => {
     // Update the document title using the browser API
-    Axios.get('http://localhost:4000/users/me', {
+    Axios.get('https://sensationnel-madame-06327.herokuapp.com/users/me', {
         withCredentials: true
       })
         .then(res => {
@@ -43,7 +43,7 @@ function LoggedIn() {
 
   const handleLogOut = (e) => {
     e.preventDefault()
-    Axios.get('http://localhost:4000/users/logout', {
+    Axios.get('https://sensationnel-madame-06327.herokuapp.com/users/logout', {
       withCredentials: true
     })
     .then(() => {

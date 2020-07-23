@@ -8,10 +8,11 @@ export default function LoginPageView() {
     const [errorMessage, setErrorMessage] = useState(false)
     const { store, dispatch } = useContext(StateContext)
     const { user } = store
+    const url = "https://sensationnel-madame-06327.herokuapp.com"
     
     useEffect(() => {
         // Update the document title using the browser API
-        Axios.get('http://localhost:4000/users/me', {
+        Axios.get(`${url}/users/me`, {
             withCredentials: true
           })
             .then(res => {
@@ -25,7 +26,7 @@ export default function LoginPageView() {
 
     const onSubmit = (e) => {
         e.preventDefault() //prevents the page from reloading
-        Axios.post('http://localhost:4000/users/login', {
+        Axios.post(`${url}/users/login`, {
         username: e.target[0].value,
         password: e.target[1].value },
        {withCredentials: true})
@@ -43,7 +44,7 @@ export default function LoginPageView() {
     }
     const handleLogOut = (e) => {
         e.preventDefault()
-        Axios.get('http://localhost:4000/users/logout', {
+        Axios.get(`${url}users/logout`, {
           withCredentials: true
         })
         .then(() => {
