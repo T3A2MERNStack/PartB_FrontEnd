@@ -1,11 +1,22 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
+import Axios from 'axios'
 
 const NewRecipeFormView = () => {
+    const url = "http://localhost:4000"
     const { register, handleSubmit, errors, watch } = useForm();
+
     const onSubmit = (data) => {
-        console.log(data);
+        // console.log(data);
+        Axios.post(`${url}/recipes/new`, {recipe: data})
+        .then(res => {
+        //    console.log(res)
+          })
+          .catch(err => {
+              throw err
+          })
     };
+
     // const numbers = [1,2,3,4]
 
     // numbers.map(number =>{
