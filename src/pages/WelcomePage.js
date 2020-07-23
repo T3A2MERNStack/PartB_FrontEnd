@@ -4,7 +4,7 @@ import { useHistory, Route, BrowserRouter, Link } from 'react-router-dom'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
 import styled from 'styled-components'
-import LoginPageView from '../components/LoginPage'
+import LoginPageView from './LoginPage'
 
 export default function Home(props) {
     // const [recipe, getRecipe] = useState("")
