@@ -15,9 +15,7 @@
     border-right: .5px solid grey;
   }
   
-  .App .right-side {
-    border-left: .5px solid grey;
-  }
+ 
   
   .App .left-side,
   .App .right-side {
@@ -58,19 +56,9 @@
     outline: none;
   }
   
-  .App .left-side form .btn.widget-btn {
-    margin-top: 15px;
-    background: #800080;
-    border: 1px solid #800080;
-    color: #FFFFFF;
-  }
+
   
-  .App .left-side form .btn.widget-btn:hover {
-    margin-top: 15px;
-    background: #4B0082;
-    border: 1px solid #4B0082;
-    color: #FFFFFF;
-  }
+ 
   
   .App .right-side .displayed-image {
     height: 300px;
