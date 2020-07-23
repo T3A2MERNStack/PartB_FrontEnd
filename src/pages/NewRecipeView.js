@@ -24,7 +24,7 @@ const NewRecipeView = () => {
         setImageUrl(res.secure_url)
         setImageAlt(`An image of ${res.original_filename}`)
         })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
   }
 
 
