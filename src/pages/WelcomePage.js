@@ -4,6 +4,7 @@ import React, { useContext } from 'react'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
 import StateContext from '../store'
+
 // import styled from 'styled-components'
 // import LoginPageView from './LoginPage'
 
@@ -50,7 +51,7 @@ export default function Home(props) {
         </div>
         <div className="container" style={{backgroundColor: 'grey'}}>
             <div className="row">
-                <div className="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', minHeight : '200px'}}>
+                <div className="col text-center" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', minHeight : '200px'}}>
                     <h2>Skincare</h2>
                     
                 </div>

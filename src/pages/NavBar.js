@@ -9,11 +9,11 @@ import Axios from 'axios'
 
 const Styles = styled.div`
   .navbar {
-    background-color: #397c5f
+    background-color: #a7ca86
   }
   a, .navbar-brand, .navbar-nav .nav-link {
     &:hover {
-      color: white
+      color: green
     }
   }
   }
@@ -77,7 +77,7 @@ function LoggedIn() {
 const NavBar = () => {
   return (
       <Styles>
-        <Navbar bg="#397c5f" expand="lg">
+        <Navbar expand="lg">
           <Navbar.Brand href="/">EcoA</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
