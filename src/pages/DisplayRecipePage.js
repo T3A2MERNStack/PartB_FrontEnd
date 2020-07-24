@@ -7,7 +7,7 @@ export default function DisplayRecipePage() {
     return (
         <div>
         <h1>Hello, world!</h1>
-        <Image cloudName="highpitchit" publicId={Newrecipe.files} width="300" crop="scale"/>
+        <Image cloudName="highpitchit" publicId={Newrecipe.id} width="300" crop="scale"/>
         </div>
     )
 }

@@ -18,7 +18,7 @@ const NewRecipeFormView = () => {
         };
     
         console.log(files, formData)
-        return fetch('https://api.Cloudinary.com/v1_1/highpitchit>/image/upload', options)
+        return fetch('https://api.Cloudinary.com/v1_1/highpitchit/image/upload', options)
           .then(res => res.json())
           .then(data => {
               console.log(data)
