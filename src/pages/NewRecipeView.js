@@ -18,6 +18,7 @@ const NewRecipeView = () => {
       body: formData,
     };
 
+    console.log(files, formData)
     return fetch('https://api.Cloudinary.com/v1_1/highpitchit/image/upload', options)
       .then(res => res.json())
       .then(res => {
@@ -32,12 +33,12 @@ const NewRecipeView = () => {
       <>
         <main className="App">
           <section className="left-side">
-            <form>
+            {/* <form>
               <div className="form-group">
                 <input type="file"/>
               </div>
               <button type="button" className="btn" onClick={handleImageUpload}>Submit</button>
-            </form>
+            </form> */}
           </section>
           <section className="right-side" >
             <p>The resulting image will be displayed here</p>

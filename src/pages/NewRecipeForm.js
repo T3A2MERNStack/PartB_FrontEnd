@@ -7,8 +7,20 @@ const NewRecipeFormView = () => {
     const { register, handleSubmit, errors, watch } = useForm();
 
     const onSubmit = (data) => {
-        // console.log(data);
-        Axios.post(`${url}/recipes/new`, {recipe: data})
+        console.log(data);
+        const files = document.querySelector('input[type="file"]').files
+        const jon = JSON.stringify(files[0])
+        const blob = new Blob ([jon], {
+            type: 'application/json'
+            });
+        const formData = new FormData();
+        formData['file'] = blob
+        formData['upload_preset'] = 'hpx42bqi'
+        console.log(formData)
+        console.log(files)
+        
+        Axios.post(`${url}/recipes/new`, {recipe: data, image: formData}
+            )
         .then(res => {
         //    console.log(res)
           })
@@ -150,8 +162,17 @@ const NewRecipeFormView = () => {
                         }
                         
                     </div>
+                    <div className="form-group">
+                    <input type="file" key="image" name="image" />
+                    </div>
                     <input className="btn btn-primary" type="submit" />
+
+                    
+                    {/* <button type="button" className="btn" onClick={handleImageUpload}>Submit</button> */}CDSF
                 </form>
+                
+                
+                
             </main>
         </>
 
