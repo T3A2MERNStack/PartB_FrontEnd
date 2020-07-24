@@ -6,11 +6,32 @@ const NewRecipeFormView = () => {
     const url = "http://localhost:4000"
     const { register, handleSubmit, errors, watch } = useForm();
 
+    const handleImageUpload = (id) => {
+        const { files } = document.querySelector('input[type="file"]')
+        const formData = new FormData();
+        formData.append('file', files[0]);
+        formData.append('upload_preset', 'hpx42bqi');
+        formData.append('public_id', id)
+        const options = {
+          method: 'POST',
+          body: formData,
+        };
+    
+        console.log(files, formData)
+        return fetch('https://api.Cloudinary.com/v1_1/highpitchit/image/upload', options)
+          .then(res => res.json())
+          .then(data => {
+              console.log(data)
+            // setImageUrl(res.secure_url)
+            // setImageAlt(`An image of ${res.original_filename}`)
+            })
+          .catch(err => console.log(err))
+      }
+
     const onSubmit = (data) => {
-        // console.log(data);
         Axios.post(`${url}/recipes/new`, {recipe: data})
         .then(res => {
-        //    console.log(res)
+            handleImageUpload(res.data.publicId)
           })
           .catch(err => {
               throw err
@@ -150,8 +171,17 @@ const NewRecipeFormView = () => {
                         }
                         
                     </div>
+                    <div className="form-group">
+                    <input type="file" key="image" name="image" />
+                    </div>
                     <input className="btn btn-primary" type="submit" />
+
+                    
+                    {/* <button type="button" className="btn" onClick={handleImageUpload}>Submit</button> */}CDSF
                 </form>
+                
+                
+                
             </main>
         </>
 
