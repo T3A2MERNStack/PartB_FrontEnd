@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {Image} from 'cloudinary-react';
 import ReactDOM from 'react-dom';
 import Newrecipe from './NewRecipeView'
+import Axios from 'axios'
 
 export default function DisplayRecipePage() {
     const [data, setData] = useState("")
