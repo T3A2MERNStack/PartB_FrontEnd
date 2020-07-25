@@ -2,7 +2,7 @@ import React, { useState ,useContext} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import Axios from 'axios'
 import StateContext from '../store'
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Button, Form, Segment, Responsive } from 'semantic-ui-react'
 
 
 export default function SignupPageView() {
@@ -23,6 +23,7 @@ export default function SignupPageView() {
         .then(res => {
           if (res.data.fail) {
             setErrorMessage(res.data.fail)
+            console.log(res.data.fail)
           } else {
             dispatch({type: "setUser", data: res.data })
             history.push('/')
@@ -32,42 +33,35 @@ export default function SignupPageView() {
             setErrorMessage(err)
         })
     }
+    // const { height } = Dimensions.get('window')
 
     return (
       <>
-        <div>
-            <h1>Sign up form</h1>
-            <form onSubmit={handleSignUp}>
-                        <label>Username</label>
-                        <input />
-                        <label>Email</label>
-                        <input type="email" required />
-                        <label>Password</label>
-                        <input />
-                        <button>Sign up</button>
-                <Link to="/login">Log in</Link>
-            </form>
-            {errorMessage ? (
-              <div>
-                  {/* <h4>{errorMessage.name}</h4> */}
-                  <p>{errorMessage.message}</p>
-              </div>
-            ) : (null)}
-        </div>
-        <Form>
-        <Form.Field>
-          <label>First Name</label>
-          <input placeholder='First Name' />
-        </Form.Field>
-        <Form.Field>
-          <label>Last Name</label>
-          <input placeholder='Last Name' />
-        </Form.Field>
-        <Form.Field>
-          <Checkbox label='I agree to the Terms and Conditions' />
-        </Form.Field>
-        <Button type='submit'>Submit</Button>
-      </Form>
+        {errorMessage ? (
+          <div>
+              {/* <h4>{errorMessage.name}</h4> */}
+              <p>{errorMessage.message}</p>
+          </div>
+        ) : (null)}
+
+        <Form style={{ marginLeft: '20%', marginRight: '20%' }} onSubmit={handleSignUp} >
+          <h1 style={{ margin: 30, textAlign: 'center' }}>Sign up form</h1>
+          <Form.Field>
+            <label>User Name</label>
+            <input placeholder='User Name' />
+          </Form.Field>
+          <Form.Field>
+            <label>Email</label>
+            <input placeholder='Email' type="email" required />
+          </Form.Field>
+          <Form.Field>
+            <label>Password</label>
+            <input placeholder='Password' type="password" required/>
+          </Form.Field>
+          <Button>
+            Sign up
+          </Button>
+        </Form>
       </>
     )
 }
