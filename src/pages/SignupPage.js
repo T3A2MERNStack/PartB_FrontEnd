@@ -2,6 +2,7 @@ import React, { useState ,useContext} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import Axios from 'axios'
 import StateContext from '../store'
+import { Button, Checkbox, Form } from 'semantic-ui-react'
 
 
 export default function SignupPageView() {
@@ -33,6 +34,7 @@ export default function SignupPageView() {
     }
 
     return (
+      <>
         <div>
             <h1>Sign up form</h1>
             <form onSubmit={handleSignUp}>
@@ -52,6 +54,20 @@ export default function SignupPageView() {
               </div>
             ) : (null)}
         </div>
-
+        <Form>
+        <Form.Field>
+          <label>First Name</label>
+          <input placeholder='First Name' />
+        </Form.Field>
+        <Form.Field>
+          <label>Last Name</label>
+          <input placeholder='Last Name' />
+        </Form.Field>
+        <Form.Field>
+          <Checkbox label='I agree to the Terms and Conditions' />
+        </Form.Field>
+        <Button type='submit'>Submit</Button>
+      </Form>
+      </>
     )
 }
