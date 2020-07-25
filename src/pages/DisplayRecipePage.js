@@ -17,35 +17,27 @@ export default function DisplayRecipePage() {
                                 if(error) {
                                 console.log(error.message)
                               }})
-                    },[]);
-        console.log(typeof(data))
-        const newArray = Array.from(data)
-        return (
-                <>
-                {console.log(data)}
-                {
-                newArray.map((object, index) => {
-                    return (
-                        <div>
+        },[]);
+    console.log(typeof(data))
+    const newArray = Array.from(data)
+    return (
+        <>
+            {console.log(data)}
+            {
+            newArray.map((object, index) => {
+                return (
+                    <div>
                         <p key={`${object.recipe.productName}`}>
                             {object.recipe.steps}
                         </p>
                         <h1>Hello, world!</h1>
                         <Image cloudName="highpitchit" publicId={Newrecipe.id} width="300" crop="scale"/>
-                        </div>                       
-                    )})
+                    </div>                       
+                )})
                 
             }
-                </>
+        </>
     )
 }
-
-//             
-//             >
-        
-//         
-//         </>
-//     }
-// }
 
 
