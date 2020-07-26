@@ -5,7 +5,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
 import StateContext from '../store'
 import { Search } from 'semantic-ui-react'
-import { Link, Image } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // import styled from 'styled-components'
 // import LoginPageView from './LoginPage'
@@ -41,22 +41,22 @@ export default function Home(props) {
             <div className="row justify-content-center">
                 <div className="col-6 col-md-3" style={{maxWidth : '80%', padding: 0}}>
                     <Link to="/homecare">
-                    <img src={ require('./img/homecare.png') } style={{width: '100%', margin: 0, padding: 0, height: '100%' }}/>
+                    <img alt="home care link" src={ require('./img/homecare.png') } style={{width: '100%', margin: 0, padding: 0, height: '100%' }}/>
                     </Link>
                 </div>
                 <div className="col-6 col-md-3" style={{backgroundColor: 'red', maxWidth : '80%', padding: 0}}>
                     <Link to="/cleaning">
-                        <img src={ require('./img/cleaning.png') } style={{width: '100%', margin: 0, padding: 0 , height: '100%'}}/>
+                        <img alt="cleaning care link" src={ require('./img/cleaning.png') } style={{width: '100%', margin: 0, padding: 0 , height: '100%'}}/>
                     </Link>
                 </div>
                 <div className="col-6 col-md-3" style={{backgroundColor: 'red', maxWidth : '80%', padding: 0}}>
                     <Link to="/personalcare">
-                        <img src={ require('./img/personalcare.png') } style={{width: '100%', margin: 0, padding: 0, height: '100%' }}/>
+                        <img alt="personal care link" src={ require('./img/personalcare.png') } style={{width: '100%', margin: 0, padding: 0, height: '100%' }}/>
                     </Link>
                 </div>
                 <div className="col-6 col-md-3" style={{backgroundColor: 'red', maxWidth : '80%', padding: 0}}>
                     <Link to="/skincare">
-                        <img src={ require('./img/skincare.png') } style={{width: '100%', margin: 0, padding: 0 , height: '100%'}}/>
+                        <img alt="skin care link" src={ require('./img/skincare.png') } style={{width: '100%', margin: 0, padding: 0 , height: '100%'}}/>
                     </Link>
                 </div>
             </div> 
