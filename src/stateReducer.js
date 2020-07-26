@@ -11,6 +11,11 @@ export default function (state, action){
                 user: action.data
             }
         }
+        case "setErrorMessage" : {
+            return {
+                message: action.data
+            }
+        }
         default: 
             return state
     }
