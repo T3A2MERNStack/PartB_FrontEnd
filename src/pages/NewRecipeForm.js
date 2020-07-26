@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
 import Axios from 'axios'
 
 const NewRecipeFormView = () => {
+    const [errorMessage, setErrorMessage] = useState(false)
     const url = "http://localhost:4000"
     const { register, handleSubmit, errors, watch } = useForm();
 
@@ -25,7 +26,7 @@ const NewRecipeFormView = () => {
             // setImageUrl(res.secure_url)
             // setImageAlt(`An image of ${res.original_filename}`)
             })
-          .catch(err => console.log(err))
+          .catch(err => console.log(err.message))
       }
 
     const onSubmit = (data) => {
@@ -33,9 +34,10 @@ const NewRecipeFormView = () => {
         .then(res => {
             handleImageUpload(res.data.publicId)
           })
-          .catch(err => {
-              throw err
-          })
+        .catch(err => {
+            setErrorMessage(err.response.data.message)
+            throw err
+        })
     };
 
     // const numbers = [1,2,3,4]
@@ -54,12 +56,13 @@ const NewRecipeFormView = () => {
 
   return (
       <>
+            {errorMessage ? ( <h3>{errorMessage}</h3> ) : (null) }
             <main className="App">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
                         <label>Product Name</label>
                         <input key="productName" name="productName" ref={register({ required: true })} /> 
-                        {errors.productSummary && 'This is required.'}{/* register an input */}
+                        {errors.productName && 'This is required.'}{/* register an input */}
                     </div>
                     <div className="form-group">
                         <label>Product Summary</label>
@@ -69,12 +72,13 @@ const NewRecipeFormView = () => {
                     <div className="form-group">
                         <label>Prep Time</label>
                         <input key="prepTime" name="prepTime" ref={register({ pattern: /\d+/ })} />
-                        {errors.age && 'Please enter number for a prep time.'}
+                        {errors.prepTime && 'Please enter number for a prep time.'}
                     </div>
                     <div className="form-group">
                         <legend>Instructions</legend>
                         <label>Step 1  </label>
                         <input name="steps[0]" key="step1" ref={register({ required: true })} />
+                        {errors.steps1 && 'This is required.'}{/* register an input */}
                     </div>
                     {
                         nextStep1 && (
@@ -111,11 +115,12 @@ const NewRecipeFormView = () => {
                     <div className="form-group">
                         <legend>Ingredients</legend>
                         <label>Ingredient 1</label>
-                        <input key="ingredientName" name="ingredients[0].ingredientName" ref={register()} />
+                        <input key="ingredientsName[0].name" name="ingredients[0].name" ref={register()} />
                         <label>Amount </label>
-                        <input key="ingredientAmount" name="ingredients[0].amount.ingredientAmount" ref={register()}/>
+                        <input key="ingredientsAmount[0].amount" name="ingredients[0].amount" ref={register({ pattern: /\d+/ })}/>
+                        {/* {errors.ingredientsAmount[0].amount && 'Please enter number'} */}
                         <label>Unit </label>
-                        <select key="ingredientUnit" name="ingredients[0].amount.unitName" ref={register({ required: true })}>
+                        <select key="ingredientsUnit[0].unit" name="ingredients[0].unit" ref={register({ required: true })}>
                             { 
                             units.map(
                             (unit,index) => <option key={unit} value={unit}>{unit}</option>
@@ -125,11 +130,12 @@ const NewRecipeFormView = () => {
                     </div>
                     <div className="form-group">
                         <label>Ingredient 2</label>
-                        <input key="ingredientName" name="ingredients[1].ingredientName" ref={register()} />
+                        <input key="ingredientsName" name="ingredients[1].name" ref={register()} />
                         <label>Amount </label>
-                        <input key="ingredientAmount" name="ingredients[1].amount.ingredientAmount" ref={register()}/>
+                        <input key="ingredientsAmount" name="ingredients[1].amount" ref={register({ pattern: /\d+/ })}/>
+                       
                         <label>Unit </label>
-                        <select key="ingredientUnit" name="ingredients[1].amount.unitName" ref={register({ required: true })}>
+                        <select key="ingredientsUnit" name="ingredients[1].unit" ref={register({ required: true })}>
                             { 
                             units.map(
                             (unit,index) => <option key={unit} value={unit}>{unit}</option>
@@ -139,11 +145,12 @@ const NewRecipeFormView = () => {
                     </div>
                     <div className="form-group">
                         <label>Ingredient 3</label>
-                        <input key="ingredientName" name="ingredients[2].ingredientName" ref={register()} />
+                        <input key="ingredientsName" name="ingredients[2].name" ref={register()} />
                         <label>Amount </label>
-                        <input key="ingredientAmount" name="ingredients[2].amount.ingredientAmount" ref={register()}/>
+                        <input key="ingredientsAmount" name="ingredients[2].amount" ref={register({ pattern: /\d+/ })}/>
+                        
                         <label>Unit </label>
-                        <select key="ingredientUnit" name="ingredients[2].amount.unitName" ref={register({ required: true })}>
+                        <select key="ingredientsUnit" name="ingredients[2].unit" ref={register({ required: true })}>
                             { 
                             units.map(
                             (unit,index) => <option key={unit} value={unit}>{unit}</option>
