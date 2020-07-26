@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
 import Axios from 'axios'
-import { Container, Form, Message } from 'semantic-ui-react'
+import { Container, Form, Message,  Checkbox } from 'semantic-ui-react'
 
 const NewRecipeFormView = () => {
     const [errorMessage, setErrorMessage] = useState(false)
@@ -49,7 +49,6 @@ const NewRecipeFormView = () => {
     const nextStep2 =  watch("steps[1]")
     const nextStep3 =  watch("steps[2]")
     const nextStep4 =  watch("steps[3]")
-
     const tags = ["quick", "zero waste", "plastic free", "low cost", "shea butter", "essential oil"]
     const units = ["gram", "cut","table spoon","tea spoon", "ounce", "ml","pound", "kg", "inch"]
 
@@ -66,7 +65,7 @@ const NewRecipeFormView = () => {
                 <Form style={{ padding : '10%'}} className='attached fluid segment'  onSubmit={handleSubmit(onSubmit)}>
                     <label>Product name</label>
                     <Form.Group>
-                        <input name="productName" key="productName" placeholder='productName' ref={register({ required: true })} width={6} />
+                        <input name="productName" key="productName" placeholder='productName'  ref={register({ required: true })}/>
                         {errors.productName && 'This is required.'}
                     </Form.Group>
                     <label>Product Summary</label>
@@ -84,6 +83,7 @@ const NewRecipeFormView = () => {
                     <Form.Group>
                         <input name="steps[0]" key="step1" placeholder='step 1'  ref={register({ required: true })}/>
                         {errors.steps && 'This is required.'}
+                    </Form.Group>
                         {
                             nextStep1 && (
                                 <>
@@ -124,9 +124,8 @@ const NewRecipeFormView = () => {
                                 </>
                             )
                         }
-                    </Form.Group>
-                        <div className="form-group">
-                            <legend>Ingredients</legend>
+                        <legend>Ingredients</legend>
+                        <Form.Group>
                             <label>Ingredient 1</label>
                             <input key="ingredientsName[0].name" name="ingredients[0].name" ref={register()} />
                             <label>Amount </label>
@@ -140,8 +139,8 @@ const NewRecipeFormView = () => {
                                 )
                                 }
                             </select>
-                        </div>
-                        <div className="form-group">
+                        </Form.Group>
+                        <Form.Group>
                             <label>Ingredient 2</label>
                             <input key="ingredientsName" name="ingredients[1].name" ref={register()} />
                             <label>Amount </label>
@@ -155,8 +154,8 @@ const NewRecipeFormView = () => {
                                 )
                                 }
                             </select>
-                        </div>
-                        <div className="form-group">
+                        </Form.Group>
+                        <Form.Group>
                             <label>Ingredient 3</label>
                             <input key="ingredientsName" name="ingredients[2].name" ref={register()} />
                             <label>Amount </label>
@@ -171,33 +170,30 @@ const NewRecipeFormView = () => {
                                 }
                             </select>
                             {errors.age && 'Please enter number for a prep time.'}
-                        </div>
-                        <div className="form-group">
+                        </Form.Group>
                         <legend>Category</legend>    
-                            <label>Category</label>
-                            <select name="category" ref={register({ required: true })}>
+                        <Form.Group  >
+                            <select name="category" style={{width: "50%"}}  ref={register({ required: true })}>
                             <option key="skin" value="skin">Skin Care</option>
                             <option key="cleaning" value="cleaning">Cleaning</option>
                             <option key="home" value="home">Home Care</option>
                             <option key="personal" value="personal">Personal Care</option>
                             </select>
-                        </div>
-                        <div className="form-group">
+                        </Form.Group>
                         <legend>Pick the tags</legend>
-                            { 
-                        tags.map(
-                            (tag,index) => <label key={tag}><input type="checkbox" value={tag} name={"tags."+index} ref={register} />{tag}</label>
-                            )
-                            }
-                            
-                        </div>
-                        <div className="form-group">
-                        <input type="file" key="image" name="image" />
-                        </div>
-                        <input className="btn btn-primary" type="submit" />
-
+                        <Form.Group widths='equal'>
                         
-                        {/* <button type="button" className="btn" onClick={handleImageUpload}>Submit</button> */}CDSF
+                                { 
+                            tags.map(
+                                (tag,index) => 
+                                <Checkbox key={index} label={tag} name={tag} value={tag} ref={register} />
+                                )
+                            }    
+                        </Form.Group>
+                        <Form.Group>
+                        <input type="file" key="image" name="image" />
+                        </Form.Group>
+                        <input className="btn btn-primary" type="submit" />
                 </Form>
             </Container>
         </>
