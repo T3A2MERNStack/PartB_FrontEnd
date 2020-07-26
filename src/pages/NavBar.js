@@ -9,7 +9,7 @@ import Axios from 'axios'
 
 const Styles = styled.div`
   .navbar {
-    background-color: #a7ca86
+    background-color: white
   }
   a, .navbar-brand, .navbar-nav .nav-link {
     &:hover {
@@ -78,7 +78,10 @@ const NavBar = () => {
   return (
       <Styles>
         <Navbar expand="lg">
-          <Navbar.Brand href="/">EcoA</Navbar.Brand>
+          <Navbar.Brand href="/">
+           
+            <img src={ require('./img/logo.png') } style={{width: 200, margin: 0, padding: 0 , height: '100%'}}/>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
