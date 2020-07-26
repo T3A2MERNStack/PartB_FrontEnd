@@ -30,8 +30,10 @@ const NewRecipeFormView = () => {
           .catch(err => console.log(err.message))
       }
 
-    const onSubmit = (data) => {
-        Axios.post(`${url}/recipes/new`, {recipe: data})
+    const onSubmit = (data) => 
+    {
+
+        Axios.post(`${url}/display`, {recipe: data})
         .then(res => {
             handleImageUpload(res.data.publicId)
           })
@@ -194,10 +196,10 @@ const NewRecipeFormView = () => {
                         <div className="form-group">
                         <input type="file" key="image" name="image" />
                         </div>
-                        <input className="btn btn-primary" type="submit" />
+                        <input className="btn btn-primary" type="submit" onClick = {handleImageUpload} />
 
                         
-                        {/* <button type="button" className="btn" onClick={handleImageUpload}>Submit</button> */}CDSF
+                        {/* <button type="button" className="btn" >Submit</button> */}
                 </Form>
             </Container>
         </>

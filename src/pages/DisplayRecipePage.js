@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {Image} from 'cloudinary-react';
 import ReactDOM from 'react-dom';
-import Newrecipe from './NewRecipeView'
+import Newrecipe from './NewRecipeForm'
 import Axios from 'axios'
 
 export default function DisplayRecipePage() {
@@ -27,11 +27,12 @@ export default function DisplayRecipePage() {
             newArray.map((object, index) => {
                 return (
                     <div>
+                        
                         <p key={`${object.recipe.productName}`}>
                             {object.recipe.steps}
                         </p>
                         <h1>Hello, world!</h1>
-                        <Image cloudName="highpitchit" publicId={Newrecipe.id} width="300" crop="scale"/>
+                        <Image cloudName="highpitchit" publicId={object.recipe.id} width="300" crop="scale"/>
                     </div>                       
                 )})
                 
