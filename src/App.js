@@ -7,7 +7,7 @@ import SkincarePage from './pages/SkincarePage'
 import HomeCarePage from './pages/HomeCarePage'
 import MyRecipesPage from './pages/MyRecipesPage'
 import PersonalCarePage from './pages/PersonalCarePage'
-import NewRecipeView from './pages/NewRecipeView'
+import NewRecipeForm from './pages/NewRecipeForm'
 import NoMatch from './pages/NoMatch'
 import NavBar from './pages/NavBar.js'
 import SignupPageView from './pages/SignupPage'
@@ -31,7 +31,7 @@ const App = () => {
             <Route exact path = "/personalcare" component={PersonalCarePage} />
             <Route exact path = "/display" component={DisplayRecipePage} />
             <Route exact path = "/myrecipes" component={MyRecipesPage} />
-            <Route exact path = "/newrecipe" component={NewRecipeView} />
+            <Route exact path = "/newrecipe" component={NewRecipeForm} />
             <Route exact path = "/signup" component={SignupPageView} />
             <Route exact path = "/login" component={LoginPageView} />
             <Route component={NoMatch} />
