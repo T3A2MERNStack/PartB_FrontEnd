@@ -4,28 +4,13 @@ import React, { useContext } from 'react'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
 import StateContext from '../store'
+import { Search } from 'semantic-ui-react'
+import { Link, Image } from 'react-router-dom'
 
 // import styled from 'styled-components'
 // import LoginPageView from './LoginPage'
 
 export default function Home(props) {
-    // const [recipe, getRecipe] = useState("")
-    // const history = useHistory();
-
-    // const onSubmit = (e) => {
-    //     e.preventDefault()
-    //     Axios.post("http://localhost:4000/lists", {"name":"TEST", "duration":"1111"})
-    //     .then(res => console.log(res))
-    //     .catch(err => console.log(err))
-    // }
-
-    // useEffect(() => {
-    //     Axios.get("http://localhost:4000/lists")
-    //     .then(res => {
-    //         getRecipe(res.data.map(value=> value.name))
-    //     })
-    //     .catch(err => console.log(err))
-    // },[])
 
     const { store } = useContext(StateContext)
     const { user } = store
@@ -49,22 +34,30 @@ export default function Home(props) {
                 </Container>
             </Jumbotron>
         </div>
+        <div className="text-center">
+            <Search style={{margin: '30px'}} placeholder='Search.... '/>
+        </div>
         <div className="container" style={{backgroundColor: 'grey'}}>
-            <div className="row">
-                <div className="col text-center" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', minHeight : '200px'}}>
-                    <h2>Skincare</h2>
-                    
+            <div className="row justify-content-center">
+                <div className="col-6 col-md-3" style={{maxWidth : '80%', padding: 0}}>
+                    <Link to="/homecare">
+                    <img src={ require('./img/homecare.png') } style={{width: '100%', margin: 0, padding: 0, height: '100%' }}/>
+                    </Link>
                 </div>
-                <div className="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', minHeight : '200px'}}>
-                    <h2>Cleaning</h2>
+                <div className="col-6 col-md-3" style={{backgroundColor: 'red', maxWidth : '80%', padding: 0}}>
+                    <Link to="/cleaning">
+                        <img src={ require('./img/cleaning.png') } style={{width: '100%', margin: 0, padding: 0 , height: '100%'}}/>
+                    </Link>
                 </div>
-            </div> 
-            <div className="row">
-                <div className="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', marginTop : '40px', minHeight : '200px'}}>
-                    <h2>Personal Care</h2>
+                <div className="col-6 col-md-3" style={{backgroundColor: 'red', maxWidth : '80%', padding: 0}}>
+                    <Link to="/personalcare">
+                        <img src={ require('./img/personalcare.png') } style={{width: '100%', margin: 0, padding: 0, height: '100%' }}/>
+                    </Link>
                 </div>
-                <div className="col" style={{backgroundColor: 'red', maxWidth : '40%', marginLeft : '5%', marginRight : '5%', marginTop : '40px', minHeight : '200px'}}>
-                    <h2>Home Care</h2>
+                <div className="col-6 col-md-3" style={{backgroundColor: 'red', maxWidth : '80%', padding: 0}}>
+                    <Link to="/skincare">
+                        <img src={ require('./img/skincare.png') } style={{width: '100%', margin: 0, padding: 0 , height: '100%'}}/>
+                    </Link>
                 </div>
             </div> 
         </div>   
