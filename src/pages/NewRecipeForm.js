@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
 import Axios from 'axios'
-import { Container, Form } from 'semantic-ui-react'
+import { Container, Form, Icon } from 'semantic-ui-react'
 
 const NewRecipeFormView = () => {
     const [errorMessage, setErrorMessage] = useState(false)
@@ -36,8 +36,12 @@ const NewRecipeFormView = () => {
             handleImageUpload(res.data.publicId)
           })
         .catch(err => {
-            setErrorMessage(err.response.data.message)
-            throw err
+            if(err.response){
+                setErrorMessage(err.response.data.message)
+            } else {
+                setErrorMessage("something went wrong")
+                throw err
+            }
         })
     };
        
@@ -53,12 +57,12 @@ const NewRecipeFormView = () => {
       <>
         <Container style={{ marginLeft: '20%', marginRight: '20%', marginTop: 30 }} >
             {errorMessage ? ( <h3>{errorMessage}</h3> ) : (null) }
-            <Form className='attached fluid segment'  onSubmit={handleSubmit(onSubmit)}>
-                    <div className="form-group">
-                        <label>Product Name</label>
-                        <input key="productName" name="productName" ref={register({ required: true })} /> 
-                        {errors.productName && 'This is required.'}{/* register an input */}
-                    </div>
+            <Form style={{ padding : '10%'}} className='attached fluid segment'  onSubmit={handleSubmit(onSubmit)}>
+                <label>Product name</label>
+                <Form.Group>
+                    <Form.Input key="productName" placeholder='productName' ref={register({ required: true })} width={6} />
+                    {errors.productName && 'This is required.'}
+                </Form.Group>
                     <div className="form-group">
                         <label>Product Summary</label>
                         <input key="productSummary" name="productSummary" ref={register({ required: true })} />
@@ -112,7 +116,7 @@ const NewRecipeFormView = () => {
                         <label>Ingredient 1</label>
                         <input key="ingredientsName[0].name" name="ingredients[0].name" ref={register()} />
                         <label>Amount </label>
-                        <input key="ingredientsAmount[0].amount" name="ingredients[0].amount" ref={register({ pattern: /\d+/ })}/>
+                        <input type="number" key="ingredientsAmount[0].amount" name="ingredients[0].amount" ref={register({ pattern: /\d+/ })}/>
                         {/* {errors.ingredientsAmount[0].amount && 'Please enter number'} */}
                         <label>Unit </label>
                         <select key="ingredientsUnit[0].unit" name="ingredients[0].unit" ref={register({ required: true })}>
