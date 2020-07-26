@@ -34,7 +34,7 @@ export default function Home(props) {
         <>
             { user ? (
                 <>
-                    <h2>You have already Logged, {user.username} </h2>
+                    <h2>Hi {user.username}, </h2>
                     {/* <button onClick={handleLogOut}>Log Out</button> */}
                 </>
             ) : (null) 

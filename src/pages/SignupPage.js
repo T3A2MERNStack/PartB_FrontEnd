@@ -2,7 +2,7 @@ import React, { useState ,useContext} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import Axios from 'axios'
 import StateContext from '../store'
-import { Button, Form, Segment, Responsive } from 'semantic-ui-react'
+import { Button, Form, Icon, Message, Container } from 'semantic-ui-react'
 
 
 export default function SignupPageView() {
@@ -22,8 +22,7 @@ export default function SignupPageView() {
         })
         .then(res => {
           if (res.data.fail) {
-            setErrorMessage(res.data.fail)
-            console.log(res.data.fail)
+            setErrorMessage(res.data.fail.message)
           } else {
             dispatch({type: "setUser", data: res.data })
             history.push('/')
@@ -33,35 +32,47 @@ export default function SignupPageView() {
             setErrorMessage(err)
         })
     }
-    // const { height } = Dimensions.get('window')
 
     return (
       <>
-        {errorMessage ? (
-          <div>
-              {/* <h4>{errorMessage.name}</h4> */}
-              <p>{errorMessage.message}</p>
-          </div>
-        ) : (null)}
-
-        <Form style={{ marginLeft: '20%', marginRight: '20%' }} onSubmit={handleSignUp} >
-          <h1 style={{ margin: 30, textAlign: 'center' }}>Sign up form</h1>
-          <Form.Field>
-            <label>User Name</label>
-            <input placeholder='User Name' />
-          </Form.Field>
-          <Form.Field>
-            <label>Email</label>
-            <input placeholder='Email' type="email" required />
-          </Form.Field>
-          <Form.Field>
-            <label>Password</label>
-            <input placeholder='Password' type="password" required/>
-          </Form.Field>
-          <Button>
-            Sign up
-          </Button>
-        </Form>
+        <Container style={{ marginLeft: '15%', marginRight: '15%', marginTop: 30 }} >
+            <Message
+              attached
+              style= {{backgroundColor: '#2e8b57'}}
+              header='Welcome to our site!'
+              content='Fill out the form below to sign-up for a new account'
+            />
+          <Form  className='attached fluid segment' onSubmit={handleSignUp} >
+            <Form.Field>
+              <label><Icon name='user' />User Name</label>
+              <input placeholder='User Name' />
+            </Form.Field>
+            <Form.Field>
+              <label><Icon name='mail' />Email</label>
+              <input placeholder='Email' type="email" required />
+            </Form.Field>
+            <Form.Field>
+              <label><Icon name='cog' />Password</label>
+              <input placeholder='Password' type="password" required/>
+            </Form.Field>
+            <Form.Checkbox label='I agree to the Terms and Conditions' />
+            <Button>
+              <Icon name='signup' />Sign up
+            </Button>
+          </Form>
+          <Message attached='bottom' warning>
+            <Icon name='help' />
+            Already signed up?&nbsp;<Link to="/login" >Login here</Link>&nbsp;instead.
+          </Message>
+          {errorMessage ? (
+                            <div>
+                            <Message
+                                error
+                                header={errorMessage}
+                                />
+                        </div>
+                        ) : (null)}
+        </Container>
       </>
     )
 }

@@ -2,6 +2,7 @@ import React, { useState,  useContext, useEffect } from 'react'
 import { Link,  useHistory } from 'react-router-dom'
 import Axios from 'axios'
 import StateContext from '../store'
+import { Button, Form, Segment, Responsive, Container, Message } from 'semantic-ui-react'
 
 export default function LoginPageView() {
     const history = useHistory();
@@ -63,23 +64,36 @@ export default function LoginPageView() {
                 </>
             ) : (
                 <>
-                    {/* { errorMessage &&
-                        <h3 className="error"> { errorMessage } </h3> } */}
-                    <h1>Log in form</h1>
-                    <form onSubmit={onSubmit}>
-                        <label>Username</label>
-                        <input />
-                        <label>Password</label>
-                        <input />
-                        <button>Log in</button>
-                        <Link to="/signup">Sign up</Link>
-                    </form>
-                    {errorMessage ? (
-                    <div>
-                        {/* <h4>{errorMessage.name}</h4> */}
-                        <p>{errorMessage}</p>
-                    </div>
-                    ) : (null)}
+                    <Container style={{ marginLeft: '15%', marginRight: '15%', marginTop: 30 }} >
+                        <Message
+                        attached
+                        style= {{backgroundColor: '#2e8b57'}}
+                        header='Log in form'
+                        // content='Fill out the form below to sign-up for a new account'
+                        />
+                        <Form className='attached fluid segment' onSubmit={onSubmit} >
+                            {/* <h1 style={{ margin: 30, textAlign: 'center' }}>Log in form</h1> */}
+                            <Form.Field>
+                                <label>Username</label>
+                                <input placeholder='Username' required />
+                            </Form.Field>
+                            <Form.Field>
+                                <label>Password</label>
+                                <input placeholder='Password' type="password" required/>
+                            </Form.Field>
+                            <Button>
+                            Log in
+                            </Button>
+                        </Form>
+                        {errorMessage ? (
+                            <div>
+                            <Message
+                                error
+                                header={errorMessage}
+                                />
+                        </div>
+                        ) : (null)}
+                    </Container>
                 </>
             )}
         </div>
