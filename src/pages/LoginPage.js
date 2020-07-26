@@ -1,8 +1,8 @@
 import React, { useState,  useContext, useEffect } from 'react'
-import { Link,  useHistory } from 'react-router-dom'
+import {useHistory } from 'react-router-dom'
 import Axios from 'axios'
 import StateContext from '../store'
-import { Button, Form, Segment, Responsive, Container, Message } from 'semantic-ui-react'
+import { Button, Form, Container, Message, Icon } from 'semantic-ui-react'
 
 export default function LoginPageView() {
     const history = useHistory();
@@ -68,21 +68,21 @@ export default function LoginPageView() {
                         <Message
                         attached
                         style= {{backgroundColor: '#2e8b57'}}
-                        header='Log in form'
+                        header= 'Log in form'
                         // content='Fill out the form below to sign-up for a new account'
                         />
                         <Form className='attached fluid segment' onSubmit={onSubmit} >
                             {/* <h1 style={{ margin: 30, textAlign: 'center' }}>Log in form</h1> */}
                             <Form.Field>
-                                <label>Username</label>
+                                <label><Icon name='user' />Username</label>
                                 <input placeholder='Username' required />
                             </Form.Field>
                             <Form.Field>
-                                <label>Password</label>
+                                <label><Icon name='cog' />Password</label>
                                 <input placeholder='Password' type="password" required/>
                             </Form.Field>
                             <Button>
-                            Log in
+                            <Icon name='sign in' />Log in
                             </Button>
                         </Form>
                         {errorMessage ? (
