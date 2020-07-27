@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Image} from 'cloudinary-react';
+import { Image } from 'cloudinary-react';
 import ReactDOM from 'react-dom';
 import Newrecipe from './NewRecipeForm'
 import Axios from 'axios'
@@ -23,35 +23,38 @@ export default function DisplayRecipePage() {
     const newArray = Array.from(data)
     return (
         <>
-            {
-            newArray.map((object, index) => {
-                return (
-                    <Card key={`${index}`}>
-                        {/* <Image cloudName="highpitchit" publicId={object.id} width="300" crop="scale"/> */}
-                        <Image src={ require('./img/logo.png') } wrapped ui={false} />
-                        <Card.Content>
-                        <Card.Header>{object.productName}</Card.Header>
-                        <Card.Meta>
-                            <span className='date'>User</span>
-                        </Card.Meta>
-                        <Card.Description>
-                            {object.productSummary}
-                        </Card.Description>
-                        </Card.Content>
-                        <Card.Content extra>
-                            Rating
-                            <Icon name='star' />
-                            <Icon name='star' />
-                            <Icon name='star' />
-                            <Icon name='star' />
-                            <Icon name='star' />
-                        </Card.Content>
-                    </Card>                     
-                )})     
-            }
+            <div className="row ">
+                    {
+                        newArray.map((object, index) => {
+                            return (
+                                <Card key={`${index}`}>
+                                {console.log(object._id)}
+                                <Image alt="product" cloudName="highpitchit" dpr="auto" publicId={object._id} width="300" crop="scale"/>
+                                <Card.Content>
+                                <Card.Header>{object.productName}</Card.Header>
+                                <Card.Meta>
+                                    <span className='date'>User</span>
+                                </Card.Meta>
+                                <Card.Description>
+                                    {object.productSummary}
+                                </Card.Description>
+                                </Card.Content>
+                                <Card.Content extra>
+                                    Rating
+                                    <Icon name='star' />
+                                    <Icon name='star' />
+                                    <Icon name='star' />
+                                    <Icon name='star' />
+                                    <Icon name='star' />
+                                </Card.Content>
+                            </Card>                     
+                        )})     
+                    }
+                {/* </div>   */}
+            </div>
             
             <Card>
-                <Image src={ require('./img/logo.png') } wrapped ui={false} />
+                <Image src={ require('./img/logo.png') } />
                 <Card.Content>
                 <Card.Header>Recipe Product Name</Card.Header>
                 <Card.Meta>
