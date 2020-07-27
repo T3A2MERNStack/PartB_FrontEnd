@@ -4,7 +4,7 @@ import React, { useContext } from 'react'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
 import StateContext from '../store'
-import { Search } from 'semantic-ui-react'
+import { Search, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 // import styled from 'styled-components'
@@ -61,6 +61,11 @@ export default function Home(props) {
                 </div>
             </div> 
         </div>   
+        <div className="text-right p-5">
+            <Button style={{marginRight: '10px'}} circular color='facebook' icon='facebook' />
+            <Button style={{marginRight: '10px'}} circular color='twitter' icon='twitter' />
+            <Button circular color='instagram' icon='instagram' />
+        </div>
         </>  
     )
 }
