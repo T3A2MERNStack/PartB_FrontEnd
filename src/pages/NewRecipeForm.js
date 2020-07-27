@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useForm } from "react-hook-form"
 import Axios from 'axios'
 import { Container, Form, Message,  Checkbox } from 'semantic-ui-react'
 import { useHistory } from 'react-router-dom'
+import StateContext from '../store'
 
 const NewRecipeFormView = () => {
+    const {store, dispatch} = useContext(StateContext)
     const [errorMessage, setErrorMessage] = useState(false)
     const url = "http://localhost:4000"
     const { register, handleSubmit, errors, watch } = useForm();
-    // const history = useHistory
+    const history = useHistory()
 
     const handleImageUpload = (id) => {
         const { files } = document.querySelector('input[type="file"]')
@@ -34,14 +36,16 @@ const NewRecipeFormView = () => {
 
     const onSubmit = (data) => 
     {
-        
-        Axios.post(`${url}/recipes/new`, {recipe: data})
+        const userId= store.user._id
+        const addUserData = { ...data, userId: userId}
+         Axios.post(`${url}/recipes/new`, {recipe: addUserData} )
         .then(res => {
+            // console.log(res.data)
+            // console.log(res.data.publicId)
             handleImageUpload(res.data.publicId)
+            // addRecipeToUser(res.data._id)
+            history.push('/')
           })
-        // .then( res => {
-        //     history.push('/display')
-        // })
         .catch(err => {
             if(err.response){
                 setErrorMessage(err.response.data.message)
@@ -51,7 +55,7 @@ const NewRecipeFormView = () => {
             }
         })
     };
-       
+
     const nextStep1 =  watch("steps[0]")
     const nextStep2 =  watch("steps[1]")
     const nextStep3 =  watch("steps[2]")
@@ -134,7 +138,7 @@ const NewRecipeFormView = () => {
                         <legend>Ingredients</legend>
                         <Form.Group>
                             <label>Ingredient 1</label>
-                            <input key="ingredientsName[0].name" name="ingredients[0].name" ref={register()} />
+                            <input key="ingredientsName[0].name" name="ingredients[0].name" ref={register({ required: true })} />
                             <label>Amount </label>
                             <input type="number" key="ingredientsAmount[0].amount" name="ingredients[0].amount" ref={register({ pattern: /\d+/ })}/>
                             {/* {errors.ingredientsAmount[0].amount && 'Please enter number'} */}
@@ -189,12 +193,11 @@ const NewRecipeFormView = () => {
                         </Form.Group>
                         <legend>Pick the tags</legend>
                         <Form.Group widths='equal'>
-                        
                                 { 
                             tags.map(
                                 (tag,index) => 
                                 <Checkbox key={index} label={tag} name={tag} value={tag} ref={register} />
-                                )
+                            )
                             }    
                         </Form.Group>
                         <Form.Group>

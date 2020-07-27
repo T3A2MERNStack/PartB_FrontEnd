@@ -14,6 +14,7 @@ import SignupPageView from './pages/SignupPage'
 import LoginPageView from './pages/LoginPage'
 import stateReducer from './stateReducer'
 import StateContext from './store'
+import ShowPage from './pages/ShowPage'
 
 
 const App = () => {
@@ -25,6 +26,8 @@ const App = () => {
           <NavBar />
           <Switch>
             <Route exact path = "/" component={WelcomePage} />
+            <Route exact path = "/recipe/:recipe_id" component={ShowPage} />
+            <Route exact path = "/display" component={DisplayRecipePage} />
             <Route exact path = "/skincare" component={SkincarePage} />
             <Route exact path = "/cleaning" component={CleaningPage} />
             <Route exact path = "/homecare" component={HomeCarePage} />

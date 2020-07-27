@@ -92,6 +92,9 @@ const NavBar = () => {
                 <Nav.Link href="/">Welcome</Nav.Link>
               </Nav.Item>
               <Nav.Item>
+                <Nav.Link href="/display">ALL recipe</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
                 <div className="dropdown">
                   <Nav.Link className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Recipe Category
