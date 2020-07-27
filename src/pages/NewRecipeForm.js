@@ -63,7 +63,8 @@ const NewRecipeFormView = () => {
     const tags = ["quick", "zero waste", "plastic free", "low cost", "shea butter", "essential oil"]
     const units = ["gram", "cut","table spoon","tea spoon", "ounce", "ml","pound", "kg", "inch"]
 
-  return (
+  return ( 
+      store.user ? (
         <>
             <Container style={{ marginLeft: '20%', marginRight: '20%', marginTop: 30 }} >
                 <Message
@@ -207,7 +208,8 @@ const NewRecipeFormView = () => {
                 </Form>
             </Container>
         </>
-    );
+        ): (<Container>YOU MUST LOG IN TO CREATE RECIPES</Container>)
+    ); 
 }
 
 

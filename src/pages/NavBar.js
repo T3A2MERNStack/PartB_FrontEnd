@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import styled from 'styled-components'
 // import {BrowserRouter, Route, Link } from 'react-router-dom'
 import StateContext from '../store'
@@ -29,10 +29,7 @@ function LoggedIn() {
         withCredentials: true
       })
         .then(res => {
-            console.log(res)
-            // setUser(res.data)
-            // I am not getting anything back from (res)
-            // dispatch({type: "setLogin" , data: true })
+            console.log(res.data)
             dispatch({type: "setUser", data: res.data })
         })
         .catch(error => {
@@ -51,7 +48,7 @@ function LoggedIn() {
       history.push('/')
     })
   }
-
+  
   if (!store.user) {
     return (
       <>
@@ -66,11 +63,8 @@ function LoggedIn() {
   } else {
     return (
       <>
-        <Nav.Item >
-          <Nav.Link href="/newrecipe">New Recipe</Nav.Link>
-        </Nav.Item>
         <button onClick={handleLogOut}>Log Out</button>
-      </>
+     </>
     )
   }
 
@@ -78,7 +72,8 @@ function LoggedIn() {
 }
 
 const NavBar = () => {
-  return (
+
+  return ( 
       <Styles>
         <Navbar expand="lg">
           <Navbar.Brand href="/">
@@ -110,6 +105,9 @@ const NavBar = () => {
               <Nav.Item>
                 <Nav.Link href="/myrecipes">My Recipes</Nav.Link>
               </Nav.Item>
+              <Nav.Item >
+                <Nav.Link href="/newrecipe" >New Recipe</Nav.Link>
+            </Nav.Item>
               <LoggedIn  />
             </Nav>
           </Navbar.Collapse>
