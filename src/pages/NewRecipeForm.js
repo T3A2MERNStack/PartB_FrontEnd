@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useForm } from "react-hook-form"
 import Axios from 'axios'
 import { Container, Form, Message,  Checkbox } from 'semantic-ui-react'
 import { useHistory } from 'react-router-dom'
+import StateContext from '../store'
 
 const NewRecipeFormView = () => {
+    const {store, dispatch} = useContext(StateContext)
     const [errorMessage, setErrorMessage] = useState(false)
     const url = "http://localhost:4000"
     const { register, handleSubmit, errors, watch } = useForm();
@@ -34,10 +36,14 @@ const NewRecipeFormView = () => {
 
     const onSubmit = (data) => 
     {
-        Axios.post(`${url}/recipes/new`, {recipe: data})
+        const userId= store.user._id
+        const addUserData = { ...data, userId: userId}
+         Axios.post(`${url}/recipes/new`, {recipe: addUserData} )
         .then(res => {
-            console.log(res.data.publicId)
+            // console.log(res.data)
+            // console.log(res.data.publicId)
             handleImageUpload(res.data.publicId)
+            // addRecipeToUser(res.data._id)
             history.push('/')
           })
         .catch(err => {
@@ -49,7 +55,7 @@ const NewRecipeFormView = () => {
             }
         })
     };
-       
+
     const nextStep1 =  watch("steps[0]")
     const nextStep2 =  watch("steps[1]")
     const nextStep3 =  watch("steps[2]")
