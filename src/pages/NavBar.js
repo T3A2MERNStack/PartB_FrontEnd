@@ -66,6 +66,9 @@ function LoggedIn() {
   } else {
     return (
       <>
+        <Nav.Item >
+          <Nav.Link href="/newrecipe">New Recipe</Nav.Link>
+        </Nav.Item>
         <button onClick={handleLogOut}>Log Out</button>
       </>
     )
@@ -100,9 +103,6 @@ const NavBar = () => {
                     <Nav.Link className="dropdown-item" href="/personalcare">Personal Care</Nav.Link>
                   </div>
                 </div>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/newrecipe">New Recipe</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link href="/myrecipes">My Recipes</Nav.Link>
