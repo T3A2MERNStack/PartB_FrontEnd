@@ -29,7 +29,7 @@ export default function DisplayRecipePage() {
                     {
                         newArray.map((object, index) => {
                             return (
-                                <Link to={`/recipe/${object._id}`} >
+                                <Link to={`/recipe/${object._id}`} key={`${object._id}`} >
                                     <Card style={{margin: 20}}key={`${index}`}>
                                         <Image alt="product" cloudName="highpitchit" dpr="auto" publicId={object._id} width="300" crop="scale"/>
                                         <Card.Content>
