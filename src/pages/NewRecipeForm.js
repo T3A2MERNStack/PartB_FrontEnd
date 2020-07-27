@@ -34,7 +34,7 @@ const NewRecipeFormView = () => {
 
     const onSubmit = (data) => 
     {
-
+        
         Axios.post(`${url}/recipes/new`, {recipe: data})
         .then(res => {
             handleImageUpload(res.data.publicId)
