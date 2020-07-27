@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import Newrecipe from './NewRecipeForm'
 import Axios from 'axios'
 import { Card, Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 export default function DisplayRecipePage() {
     const [data, setData] = useState("")
@@ -23,31 +24,33 @@ export default function DisplayRecipePage() {
     const newArray = Array.from(data)
     return (
         <>
-            <div className="row ">
+
+            <div className="d-flex justify-content-start ml-5" >
                     {
                         newArray.map((object, index) => {
                             return (
-                                <Card key={`${index}`}>
-                                {console.log(object._id)}
-                                <Image alt="product" cloudName="highpitchit" dpr="auto" publicId={object._id} width="300" crop="scale"/>
-                                <Card.Content>
-                                <Card.Header>{object.productName}</Card.Header>
-                                <Card.Meta>
-                                    <span className='date'>User</span>
-                                </Card.Meta>
-                                <Card.Description>
-                                    {object.productSummary}
-                                </Card.Description>
-                                </Card.Content>
-                                <Card.Content extra>
-                                    Rating
-                                    <Icon name='star' />
-                                    <Icon name='star' />
-                                    <Icon name='star' />
-                                    <Icon name='star' />
-                                    <Icon name='star' />
-                                </Card.Content>
-                            </Card>                     
+                                <Link to={`/recipe/${object._id}`} >
+                                    <Card style={{margin: 20}}key={`${index}`}>
+                                        <Image alt="product" cloudName="highpitchit" dpr="auto" publicId={object._id} width="300" crop="scale"/>
+                                        <Card.Content>
+                                            <Card.Header>{object.productName}</Card.Header>
+                                            <Card.Meta>
+                                                <span className='date'>User</span>
+                                            </Card.Meta>
+                                            <Card.Description>
+                                                {object.productSummary}
+                                            </Card.Description>
+                                        </Card.Content>
+                                        <Card.Content extra>
+                                            Rating
+                                            <Icon name='star' />
+                                            <Icon name='star' />
+                                            <Icon name='star' />
+                                            <Icon name='star' />
+                                            <Icon name='star' />
+                                        </Card.Content>
+                                    </Card>
+                                </Link>                
                         )})     
                     }
                 {/* </div>   */}
