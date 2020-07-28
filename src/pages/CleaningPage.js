@@ -4,7 +4,7 @@ import Axios from 'axios'
 import { Card, Icon, Rating } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { Container, Row , Col} from 'react-bootstrap'
-
+import RecipePage from './RecipeRender'
 
 export default function CleaningPage() {
 
@@ -24,11 +24,10 @@ export default function CleaningPage() {
             }})
         },[]);
     // console.log(typeof(data))
-    const newArray = Array.from(data)
+   const newArray = Array.from(data)
 
     console.log(data)
     return (
-        <>
         <Container>
             <Row  className="justify-content">
                 
@@ -58,7 +57,6 @@ export default function CleaningPage() {
                 }
             </Row>
         </Container>
-    </>
     )
 }
 

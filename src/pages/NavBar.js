@@ -87,8 +87,6 @@ function LoggedIn() {
       </>
     )
   }
-
-
 }
 
 const NavBar = () => {
