@@ -3,17 +3,20 @@ export default function (state, action){
         case "setLogin": {
             // console.log("setLogin action: " + action.data)
             return {
+                ...state,
                 login: action.data
             }
         }
         case "setUser" : {
             return {
+                ...state,
                 user: action.data
             }
         }
-        case "setErrorMessage" : {
+        case "setRecipe" : {
             return {
-                message: action.data
+                ...state,
+                recipe: action.data
             }
         }
         default: 

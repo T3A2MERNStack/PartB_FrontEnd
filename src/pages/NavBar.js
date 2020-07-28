@@ -35,14 +35,25 @@ function LoggedIn() {
         withCredentials: true
       })
         .then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             dispatch({type: "setUser", data: res.data })
+            // console.log(store.user)
+            getRecipe(res.data)
         })
         .catch(error => {
             if(error) {
             console.log(error.message)
           }})
   },[]);
+
+  const getRecipe = (data) => {
+    Axios.get(`http://localhost:4000/recipes/me/${data._id}`)
+    .then((res) => {
+      dispatch({type: "setRecipe", data: res.data})
+      // console.log(store)
+    })
+  }
+
 
   const handleLogOut = (e) => {
     e.preventDefault()
@@ -72,7 +83,7 @@ function LoggedIn() {
       <Nav.Item>
                 <Nav.Link href="/myrecipes">My Recipes</Nav.Link>
       </Nav.Item>
-        <button onClick={handleLogOut}>Log Out</button>
+      <button onClick={handleLogOut}>Log Out</button>
       </>
     )
   }
