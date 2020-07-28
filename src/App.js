@@ -15,6 +15,7 @@ import LoginPageView from './pages/LoginPage'
 import stateReducer from './stateReducer'
 import StateContext from './store'
 import ShowPage from './pages/ShowPage'
+import RecipeEditForm from './pages/RecipeEditForm'
 
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
             <Route exact path = "/newrecipe" component={NewRecipeForm} />
             <Route exact path = "/signup" component={SignupPageView} />
             <Route exact path = "/login" component={LoginPageView} />
+            <Route exact path = "/recipe/edit/:recipe_id" component={RecipeEditForm} />
             <Route component={NoMatch} />
           </Switch>
         </BrowserRouter>
