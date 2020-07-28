@@ -4,7 +4,6 @@ import Axios from 'axios'
 import StateContext from '../store'
 import { Button, Form, Icon, Message, Container } from 'semantic-ui-react'
 
-
 export default function SignupPageView() {
     const history = useHistory();
     const [errorMessage, setErrorMessage] = useState(false)

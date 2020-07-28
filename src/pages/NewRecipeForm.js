@@ -11,6 +11,7 @@ const NewRecipeFormView = () => {
     const url = "http://localhost:4000"
     const { register, handleSubmit, errors, watch } = useForm();
     const history = useHistory()
+    console.log(store)
 
     const handleImageUpload = (id) => {
         const { files } = document.querySelector('input[type="file"]')
@@ -57,7 +58,6 @@ const NewRecipeFormView = () => {
             }
         })
     };
-
     const nextStep1 =  watch("steps[0]")
     const nextStep2 =  watch("steps[1]")
     const nextStep3 =  watch("steps[2]")

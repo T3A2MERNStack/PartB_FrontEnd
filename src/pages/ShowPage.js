@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { Segment, Icon, Rating } from 'semantic-ui-react'
 import { Image } from 'cloudinary-react';
 import Axios from 'axios'
 import { Link } from 'react-router-dom'
+import StateContext from '../store'
 
 
 export default function ShowPage(props) {
     const [data, setData] = useState(null)
     const {recipe_id} = props.match.params
     const url = "http://localhost:4000"
+    const {store, dispatch} = useContext(StateContext)
 
     useEffect(() => {
         Axios.get(`${url}/recipes/get/${recipe_id}`)
@@ -22,6 +24,8 @@ export default function ShowPage(props) {
                                 console.log(error.message)
                               }})
     },[]);
+
+    console.log(store)
 
     return (data &&
         <>

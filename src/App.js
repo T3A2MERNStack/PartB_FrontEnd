@@ -22,7 +22,7 @@ const App = () => {
   const [store, dispatch] = useReducer(stateReducer, {login: false, user: false} )
   return (
     <div >
-      <StateContext.Provider value={{ store , dispatch}}>
+      <StateContext.Provider value={{ store , dispatch }}>
         <BrowserRouter>
           <NavBar />
           <Switch>
