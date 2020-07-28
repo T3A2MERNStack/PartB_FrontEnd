@@ -25,15 +25,10 @@ export default function Home(props) {
             ) : (null) 
             }
         <div className="text-center">
-        {/* <img alt="green leaves" src={ require('./img/banner.png') } style={{width: '100%', margin: 0, padding: 0 , height: '100%'}}/> */}
-            <Jumbotron src={ require('./img/banner.png') } style={{marginTop : '30px'}}>
-                
+            <Jumbotron style={{marginTop : '30px'}}>
                 <Container>
-                    
                     <h1>Welcome to EcoA</h1>
-                    <p>
-                        Your resource for zero waste home products
-                    </p>
+                    <p> Your resource for zero waste home products </p>
                 </Container>
             </Jumbotron>
         </div>

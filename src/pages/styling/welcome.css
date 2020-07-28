@@ -4,3 +4,8 @@
     color: white;
     opacity: 0.7;
   }
+
+  .card {
+    width: "250px";
+    height: "400px"
+  }

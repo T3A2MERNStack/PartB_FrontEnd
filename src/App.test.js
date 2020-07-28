@@ -4,6 +4,7 @@ import App from './App';
 import Enzyme, { shallow } from "enzyme"
 import EnzymeAdapter from 'enzyme-adapter-react-16'
 import Display from './pages/DisplayRecipePage'
+
 import CleaningPage from './pages/CleaningPage'
 import HomeCarePage from './pages/HomeCarePage'
 import SkincarePage from './pages/SkincarePage'
@@ -13,11 +14,13 @@ import ShowPage from './pages/ShowPage'
 import SignupPageView from './pages/SignupPage'
 import NewRecipeView from './pages/candelete'
 
+
 Enzyme.configure({ adapter: new EnzymeAdapter() })
 
 it ('renders without crashing', () => {
   const wrapper = shallow(<App />)
 })
+
 
 it ('display renders without crashing', () => {
   const wrapper = shallow(<Display />)
@@ -73,3 +76,4 @@ describe('LoginMethods()', () => {
     expect(LoginMethods().isEmailValid('notvalidemail.aswell')).toBeFalsy();
   })
 });
+
