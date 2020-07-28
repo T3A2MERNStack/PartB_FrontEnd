@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { Segment, Icon, Rating } from 'semantic-ui-react'
+import { Segment, Icon, Rating, Button } from 'semantic-ui-react'
 import { Image } from 'cloudinary-react';
 import Axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import StateContext from '../store'
 
 
@@ -11,6 +11,7 @@ export default function ShowPage(props) {
     const {recipe_id} = props.match.params
     const url = "http://localhost:4000"
     const {store, dispatch} = useContext(StateContext)
+    const history = useHistory();
 
     useEffect(() => {
         Axios.get(`${url}/recipes/get/${recipe_id}`)
@@ -27,11 +28,24 @@ export default function ShowPage(props) {
 
     console.log(store)
 
+    const onDelete = () => {
+        Axios.delete(`${url}/recipes/delete/${recipe_id}`)
+            .then(res => {
+                console.log("worked")
+                history.push('/')
+            })
+            .catch (err => {
+                console.log(err)
+            })
+    }
+
     return (data &&
         <>
             <Segment.Group style={{margin: '1em', padding: '1em', borderColor: "white"}}>
                 <div><h1>{data.productName}</h1></div><br></br>
                 <img alt="product" src={ require('./img/homecare.png') } style={{ width: '100%', outline: "3px solid white", outlineOffset: "-6px"}} />
+                <Link to={`/recipe/edit/${recipe_id}`}><Button>EDIT RECIPE</Button></Link>
+                <Button onClick={onDelete}>DELETE RECIPE</Button>
                 <br></br><div className="text-right">By<Icon name = 'user' />Arisa Okuyama</div>
                 <br></br>
                 <p>{data.productSummary}</p>
@@ -51,7 +65,6 @@ export default function ShowPage(props) {
                 <h3>3</h3><p>{data.steps[2]}</p>
                 <h3>4</h3><p>{data.steps[3]}</p>
                 <h3>4</h3><p>{data.steps[4]}</p>
-                <Link to={`/recipe/edit/${recipe_id}`}>EDIT FORM</Link>
             </Segment.Group>
         </>
     )
