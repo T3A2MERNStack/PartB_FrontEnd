@@ -3,10 +3,10 @@ import { Image } from 'cloudinary-react';
 import Axios from 'axios'
 import { Card, Icon, Rating } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import { Container, Row , Col} from 'react-bootstrap'
+import { Container, Row , Col, Jumbotron} from 'react-bootstrap'
 
 
-export default function HomecarePage() {
+export default function HomeCarePage() {
 
     const [data, setData] = useState("")
     const url = "http://localhost:4000"
@@ -29,6 +29,11 @@ export default function HomecarePage() {
 
     return (
         <>
+        <Jumbotron className="text-center" style={{ marginTop: '30px'}}>
+        <Container>
+                    <h1>Home Care Recipes</h1>
+        </Container>
+        </Jumbotron>
         <Container>
             <Row  className="justify-content">
                 {
@@ -36,7 +41,7 @@ export default function HomecarePage() {
                         return (
                             <Col sm={12} md={3}>
                             <Link to={`/recipe/${object._id}`} key={`${object._id}`} >
-                                <Card key={`${index}`} style={{margin: 10}}>
+                                <Card key={`${index}`} style={{margin: 10, width: "250px", height: "400px"}}>
                                     <Image alt="product" cloudName="highpitchit" dpr="auto" publicId={object._id} width="150" crop="scale"/>
                                     <Card.Content>
                                         <Card.Header>{object.productName}</Card.Header>

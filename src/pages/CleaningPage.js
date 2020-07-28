@@ -5,7 +5,7 @@ import { Card, Icon, Rating } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { Container, Row , Col} from 'react-bootstrap'
 import Jumbotron from 'react-bootstrap/Jumbotron'
-import './styling/cleaning.css'
+
 
 export default function CleaningPage() {
 
@@ -30,20 +30,19 @@ export default function CleaningPage() {
     console.log(data)
     return (
         <>
-        <Jumbotron className="cleanb" style={{ marginTop: '30px'}}>
+        <Jumbotron className="text-center" style={{ marginTop: '30px'}}>
         <Container>
-                    
+                    <h1>Cleaning Recipes</h1>
         </Container>
         </Jumbotron>
         <Container>
             <Row  className="justify-content">
-                
                 {
                     newArray.map((object, index) => {
                         return (
                             <Col sm={12} md={3}>
                             <Link to={`/recipe/${object._id}`} key={`${object._id}`} >
-                                <Card key={`${index}`} style={{margin: 10}}>
+                                <Card key={`${index}`} style={{margin: 10, width: "250px", height: "400px"}}>
                                     <Image alt="product" cloudName="highpitchit" dpr="auto" publicId={object._id} width="150" crop="scale"/>
                                     <Card.Content>
                                         <Card.Header>{object.productName}</Card.Header>
