@@ -95,7 +95,6 @@ const NavBar = () => {
       <Styles>
         <Navbar expand="lg">
           <Navbar.Brand href="/">
-           
             <img src={ require('./img/logo.png') } style={{width: 200, margin: 0, padding: 0 , height: '100%'}}/>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
