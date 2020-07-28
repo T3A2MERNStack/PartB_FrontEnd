@@ -1,0 +1,6 @@
+.jumbotron {
+    background-image: url("../img/banner.png");
+    background-size: cover;
+    color: white;
+    opacity: 0.7;
+  }
