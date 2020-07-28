@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Image } from 'cloudinary-react';
 import Axios from 'axios'
-import { Card, Icon } from 'semantic-ui-react'
+import { Card, Icon, Rating } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { Container, Row , Col} from 'react-bootstrap'
 
 export default function DisplayRecipePage() {
     const [data, setData] = useState("")
@@ -23,13 +24,16 @@ export default function DisplayRecipePage() {
     const newArray = Array.from(data)
     return (
         <>
-            <div className="" >
+            <Container>
+                <Row  className="justify-content">
+                    
                     {
                         newArray.map((object, index) => {
                             return (
+                                <Col sm={12} md={3}>
                                 <Link to={`/recipe/${object._id}`} key={`${object._id}`} >
-                                    <Card style={{margin: 20}}key={`${index}`}>
-                                        <Image alt="product" cloudName="highpitchit" dpr="auto" publicId={object._id} width="300" crop="scale"/>
+                                    <Card key={`${index}`} style={{margin: 10}}>
+                                        <Image alt="product" cloudName="highpitchit" dpr="auto" publicId={object._id} width="150" crop="scale"/>
                                         <Card.Content>
                                             <Card.Header>{object.productName}</Card.Header>
                                             <Card.Meta>
@@ -40,18 +44,15 @@ export default function DisplayRecipePage() {
                                             </Card.Description>
                                         </Card.Content>
                                         <Card.Content extra>
-                                            Rating
-                                            <Icon name='star' />
-                                            <Icon name='star' />
-                                            <Icon name='star' />
-                                            <Icon name='star' />
-                                            <Icon name='star' />
+                                            <Rating icon='heart' defaultRating={3} maxRating={5} /> (### ratings)
                                         </Card.Content>
                                     </Card>
                                 </Link>                
+                            </Col>
                         )})     
                     }
-            </div>
+                </Row>
+            </Container>
         </>
     )
 }

@@ -65,6 +65,8 @@ export default function ShowPage(props) {
                 <h3>3</h3><p>{data.steps[2]}</p>
                 <h3>4</h3><p>{data.steps[3]}</p>
                 <h3>4</h3><p>{data.steps[4]}</p>
+                <h3>CATEGORY</h3>
+                <p>{data.category}</p>
             </Segment.Group>
         </>
     )
