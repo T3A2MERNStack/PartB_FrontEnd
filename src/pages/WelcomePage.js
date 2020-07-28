@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container'
 import StateContext from '../store'
 import { Search, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-
+import './styling/welcome.css'
 // import styled from 'styled-components'
 // import LoginPageView from './LoginPage'
 
@@ -25,8 +25,11 @@ export default function Home(props) {
             ) : (null) 
             }
         <div className="text-center">
-            <Jumbotron style={{marginTop : '30px'}}>
+        {/* <img alt="green leaves" src={ require('./img/banner.png') } style={{width: '100%', margin: 0, padding: 0 , height: '100%'}}/> */}
+            <Jumbotron src={ require('./img/banner.png') } style={{marginTop : '30px'}}>
+                
                 <Container>
+                    
                     <h1>Welcome to EcoA</h1>
                     <p>
                         Your resource for zero waste home products
@@ -44,17 +47,17 @@ export default function Home(props) {
                     <img alt="home care link" src={ require('./img/homecare.png') } style={{width: '100%', margin: 0, padding: 0, height: '100%' }}/>
                     </Link>
                 </div>
-                <div className="col-6 col-md-3" style={{backgroundColor: 'red', maxWidth : '80%', padding: 0}}>
+                <div className="col-6 col-md-3" style={{maxWidth : '80%', padding: 0}}>
                     <Link to="/cleaning">
                         <img alt="cleaning care link" src={ require('./img/cleaning.png') } style={{width: '100%', margin: 0, padding: 0 , height: '100%'}}/>
                     </Link>
                 </div>
-                <div className="col-6 col-md-3" style={{backgroundColor: 'red', maxWidth : '80%', padding: 0}}>
+                <div className="col-6 col-md-3" style={{maxWidth : '80%', padding: 0}}>
                     <Link to="/personalcare">
                         <img alt="personal care link" src={ require('./img/personalcare.png') } style={{width: '100%', margin: 0, padding: 0, height: '100%' }}/>
                     </Link>
                 </div>
-                <div className="col-6 col-md-3" style={{backgroundColor: 'red', maxWidth : '80%', padding: 0}}>
+                <div className="col-6 col-md-3" style={{maxWidth : '80%', padding: 0}}>
                     <Link to="/skincare">
                         <img alt="skin care link" src={ require('./img/skincare.png') } style={{width: '100%', margin: 0, padding: 0 , height: '100%'}}/>
                     </Link>
