@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Segment, Icon, Rating } from 'semantic-ui-react'
 import { Image } from 'cloudinary-react';
 import Axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 export default function ShowPage(props) {
@@ -20,7 +21,7 @@ export default function ShowPage(props) {
                                 if(error) {
                                 console.log(error.message)
                               }})
-        },[]);
+    },[]);
 
     return (data &&
         <>
@@ -46,6 +47,7 @@ export default function ShowPage(props) {
                 <h3>3</h3><p>{data.steps[2]}</p>
                 <h3>4</h3><p>{data.steps[3]}</p>
                 <h3>4</h3><p>{data.steps[4]}</p>
+                <Link to={`/recipe/edit/${recipe_id}`}>EDIT FORM</Link>
             </Segment.Group>
         </>
     )

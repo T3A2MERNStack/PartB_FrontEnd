@@ -5,46 +5,44 @@ import { Container, Form, Message,  Checkbox } from 'semantic-ui-react'
 import { useHistory, Link } from 'react-router-dom'
 import StateContext from '../store'
 
-const NewRecipeFormView = () => {
+const RecipeEditForm = (props) => {
     const {store, dispatch} = useContext(StateContext)
     const [errorMessage, setErrorMessage] = useState(false)
     const url = "http://localhost:4000"
     const { register, handleSubmit, errors, watch } = useForm();
     const history = useHistory()
-
-    const handleImageUpload = (id) => {
-        const { files } = document.querySelector('input[type="file"]')
-        const formData = new FormData();
-        formData.append('file', files[0]);
-        formData.append('upload_preset', 'hpx42bqi');
-        formData.append('public_id', id)
-        const options = {
-          method: 'POST',
-          body: formData,
-        };
+    const {recipe_id} = props.match.params
+    // const handleImageUpload = (id) => {
+    //     const { files } = document.querySelector('input[type="file"]')
+    //     const formData = new FormData();
+    //     formData.append('file', files[0]);
+    //     formData.append('upload_preset', 'hpx42bqi');
+    //     formData.append('public_id', id)
+    //     const options = {
+    //       method: 'POST',
+    //       body: formData,
+    //     };
     
-        console.log(files, formData)
-        return fetch('https://api.Cloudinary.com/v1_1/highpitchit/image/upload', options)
-          .then(res => res.json())
-          .then(data => {
-              console.log(data)
-            // setImageUrl(res.secure_url)
-            // setImageAlt(`An image of ${res.original_filename}`)
-            })
-          .catch(err => console.log(err.message))
-      }
+    //     console.log(files, formData)
+    //     return fetch('https://api.Cloudinary.com/v1_1/highpitchit/image/upload', options)
+    //       .then(res => res.json())
+    //       .then(data => {
+    //           console.log(data)
+    //         // setImageUrl(res.secure_url)
+    //         // setImageAlt(`An image of ${res.original_filename}`)
+    //         })
+    //       .catch(err => console.log(err.message))
+    //   }
 
     const onSubmit = (data) => 
     {
-        console.log(store.user)
         const userId= store.user._id
         const addUserData = { ...data, userId: userId}
-        console.log(addUserData)
-         Axios.post(`${url}/recipes/new`, {recipe: addUserData} )
+         Axios.put(`${url}/recipes/edit/${recipe_id}`, {recipe: addUserData} )
         .then(res => {
             // console.log(res.data)
             // console.log(res.data.publicId)
-            handleImageUpload(res.data.publicId)
+            // handleImageUpload(res.data.publicId)
             // addRecipeToUser(res.data._id)
             history.push('/')
           })
@@ -63,8 +61,8 @@ const NewRecipeFormView = () => {
     const nextStep3 =  watch("steps[2]")
     const nextStep4 =  watch("steps[3]")
     const tags = ["quick", "zero waste", "plastic free", "low cost", "shea butter", "essential oil"]
-    const units = ["gram", "cup","tablespoon","teaspoon", "ounce", "ml","pound", "kg", "inch", "L"]
-    
+    const units = ["gram", "cut","table spoon","tea spoon", "ounce", "ml","pound", "kg", "inch"]
+
   return ( 
       store.user ? (
         <>
@@ -79,23 +77,23 @@ const NewRecipeFormView = () => {
                 <Form style={{ padding : '10%'}} className='attached fluid segment'  onSubmit={handleSubmit(onSubmit)}>
                     <label>Product name</label>
                     <Form.Group>
-                        <input name="productName" key="productName" placeholder='productName'  ref={register({ required: true })}/>
+                        <input name="productName" key="productName" placeholder='productName'  ref={register()}/>
                         {errors.productName && 'This is required.'}
                     </Form.Group>
                     <label>Product Summary</label>
                     <Form.Group>
-                        <input name="productSummary" key="productSummary" placeholder='productSummary' ref={register({ required: true })}/>
+                        <input name="productSummary" key="productSummary" placeholder='productSummary' ref={register()}/>
                         {errors.productSummary && 'This is required.'}
                     </Form.Group>
                     <label>Prep Time</label>
                     <Form.Group>
-                        <input name="prepTime" key="prepTime" placeholder='prepTime' type="number" ref={register({ required: true })}/>
+                        <input name="prepTime" key="prepTime" placeholder='prepTime' type="number" ref={register()}/>
                         {errors.prepTime && 'This is required.'}
                     </Form.Group>
                     <legend>Instructions</legend>
                     <label>Step 1  </label>
                     <Form.Group>
-                        <input name="steps[0]" key="step1" placeholder='step 1'  ref={register({ required: true })}/>
+                        <input name="steps[0]" key="step1" placeholder='step 1'  ref={register()}/>
                         {errors.steps && 'This is required.'}
                     </Form.Group>
                         {
@@ -103,7 +101,7 @@ const NewRecipeFormView = () => {
                                 <>
                                     <label>Step 2</label>
                                     <Form.Group>
-                                        <input name="steps[1]" key="step2" placeholder='step2'ref={register({ required: true })}/>
+                                        <input name="steps[1]" key="step2" placeholder='step2'ref={register()}/>
                                     </Form.Group>
                                 </>
                             )
@@ -113,7 +111,7 @@ const NewRecipeFormView = () => {
                                 <>
                                     <label>Step 3</label>
                                     <Form.Group>
-                                        <input name="steps[2]" key="step3" placeholder='step3'ref={register({ required: true })}/>
+                                        <input name="steps[2]" key="step3" placeholder='step3'ref={register()}/>
                                     </Form.Group>
                                 </>
                             )
@@ -123,7 +121,7 @@ const NewRecipeFormView = () => {
                                 <>
                                     <label>Step 4</label>
                                     <Form.Group>
-                                        <input name="steps[3]" key="step4" placeholder='step4'ref={register({ required: true })}/>
+                                        <input name="steps[3]" key="step4" placeholder='step4'ref={register()}/>
                                     </Form.Group>
                                 </>
                             )
@@ -133,7 +131,7 @@ const NewRecipeFormView = () => {
                                 <>
                                     <label>Step 5</label>
                                     <Form.Group>
-                                        <input name="steps[4]" key="step5" placeholder='step5'ref={register({ required: true })}/>
+                                        <input name="steps[4]" key="step5" placeholder='step5'ref={register()}/>
                                     </Form.Group>
                                 </>
                             )
@@ -141,12 +139,12 @@ const NewRecipeFormView = () => {
                         <legend>Ingredients</legend>
                         <Form.Group>
                             <label>Ingredient 1</label>
-                            <input key="ingredientsName[0].name" name="ingredients[0].name" ref={register({ required: true })} />
+                            <input key="ingredientsName[0].name" name="ingredients[0].name" ref={register()} />
                             <label>Amount </label>
                             <input type="number" key="ingredientsAmount[0].amount" name="ingredients[0].amount" ref={register({ pattern: /\d+/ })}/>
                             {/* {errors.ingredientsAmount[0].amount && 'Please enter number'} */}
                             <label>Unit </label>
-                            <select key="ingredientsUnit[0].unit" name="ingredients[0].unit" ref={register({ required: true })}>
+                            <select key="ingredientsUnit[0].unit" name="ingredients[0].unit" ref={register()}>
                                 { 
                                 units.map(
                                 (unit,index) => <option key={unit} value={unit}>{unit}</option>
@@ -206,7 +204,7 @@ const NewRecipeFormView = () => {
                         <Form.Group>
                             <input type="file" key="image" name="image" />
                         </Form.Group>
-                            <input className="btn btn-primary" type="submit" onClick = {handleImageUpload} />
+                            <input className="btn btn-primary" type="submit" />
                 </Form>
             </Container>
         </>
@@ -215,4 +213,4 @@ const NewRecipeFormView = () => {
 }
 
 
-export default NewRecipeFormView;
+export default RecipeEditForm;
