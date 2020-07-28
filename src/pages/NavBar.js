@@ -20,7 +20,7 @@ const Styles = styled.div`
   a, .navbar-brand, .navbar-nav .nav-link {
     &:hover {
       color: green
-    }
+    } 
   }
   }
 `
