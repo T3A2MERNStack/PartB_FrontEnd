@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react'
-import { useForm } from "react-hook-form"
+import React, { useState, useContext, useEffect } from 'react'
+import { useForm, Controller } from "react-hook-form"
 import Axios from 'axios'
 import { Container, Form, Message,  Checkbox } from 'semantic-ui-react'
 import { useHistory, Link } from 'react-router-dom'
@@ -12,6 +12,26 @@ const RecipeEditForm = (props) => {
     const { register, handleSubmit, errors, watch } = useForm();
     const history = useHistory()
     const {recipe_id} = props.match.params
+    // console.log(recipe_id)
+    const [recipeData, recipeSetData] = useState(null)
+
+    const {control} = useForm();
+
+
+    useEffect(() => {
+        Axios.get(`${url}/recipes/get/${recipe_id}`)
+            .then(res => {
+                recipeSetData(res.data[0])
+                // console.log(res.data)
+            })
+            .catch(error => {
+                                if(error) {
+                                console.log(error.message)
+                              }})
+    },[]);
+
+    console.log(recipeData)
+
     // const handleImageUpload = (id) => {
     //     const { files } = document.querySelector('input[type="file"]')
     //     const formData = new FormData();
@@ -55,16 +75,12 @@ const RecipeEditForm = (props) => {
             }
         })
     };
-
-    const nextStep1 =  watch("steps[0]")
-    const nextStep2 =  watch("steps[1]")
-    const nextStep3 =  watch("steps[2]")
-    const nextStep4 =  watch("steps[3]")
+    // console.log(store)
     const tags = ["quick", "zero waste", "plastic free", "low cost", "shea butter", "essential oil"]
     const units = ["gram", "cut","table spoon","tea spoon", "ounce", "ml","pound", "kg", "inch"]
 
   return ( 
-      store.user ? (
+    recipeData ? (
         <>
             <Container style={{ marginLeft: '20%', marginRight: '20%', marginTop: 30 }} >
                 <Message
@@ -77,74 +93,50 @@ const RecipeEditForm = (props) => {
                 <Form style={{ padding : '10%'}} className='attached fluid segment'  onSubmit={handleSubmit(onSubmit)}>
                     <label>Product name</label>
                     <Form.Group>
-                        <input name="productName" key="productName" placeholder='productName'  ref={register()}/>
+                        <input name="productName" defaultValue={recipeData.productName} key="productName" ref={register()}/>
                         {errors.productName && 'This is required.'}
                     </Form.Group>
                     <label>Product Summary</label>
                     <Form.Group>
-                        <input name="productSummary" key="productSummary" placeholder='productSummary' ref={register()}/>
+                        <input name="productSummary" defaultValue={recipeData.productSummary} key="productSummary" placeholder='productSummary' ref={register()}/>
                         {errors.productSummary && 'This is required.'}
                     </Form.Group>
                     <label>Prep Time</label>
                     <Form.Group>
-                        <input name="prepTime" key="prepTime" placeholder='prepTime' type="number" ref={register()}/>
+                        <input name="prepTime" defaultValue={recipeData.prepTime} key="prepTime" placeholder='prepTime' type="number" ref={register()}/>
                         {errors.prepTime && 'This is required.'}
                     </Form.Group>
                     <legend>Instructions</legend>
                     <label>Step 1  </label>
                     <Form.Group>
-                        <input name="steps[0]" key="step1" placeholder='step 1'  ref={register()}/>
+                        <input name="steps[0]" key="step1" defaultValue={recipeData.steps[0]} placeholder='step 1'  ref={register()}/>
                         {errors.steps && 'This is required.'}
                     </Form.Group>
-                        {
-                            nextStep1 && (
-                                <>
-                                    <label>Step 2</label>
-                                    <Form.Group>
-                                        <input name="steps[1]" key="step2" placeholder='step2'ref={register()}/>
-                                    </Form.Group>
-                                </>
-                            )
-                        }
-                        {
-                            nextStep2 && (
-                                <>
-                                    <label>Step 3</label>
-                                    <Form.Group>
-                                        <input name="steps[2]" key="step3" placeholder='step3'ref={register()}/>
-                                    </Form.Group>
-                                </>
-                            )
-                        }
-                        {
-                            nextStep3 && (
-                                <>
-                                    <label>Step 4</label>
-                                    <Form.Group>
-                                        <input name="steps[3]" key="step4" placeholder='step4'ref={register()}/>
-                                    </Form.Group>
-                                </>
-                            )
-                        }
-                        {
-                            nextStep4 && (
-                                <>
-                                    <label>Step 5</label>
-                                    <Form.Group>
-                                        <input name="steps[4]" key="step5" placeholder='step5'ref={register()}/>
-                                    </Form.Group>
-                                </>
-                            )
-                        }
+                    <label>Step 2</label>
+                    <Form.Group>
+                        <input name="steps[1]" key="step2" defaultValue={recipeData.steps[1]} placeholder='step2'ref={register()}/>
+                    </Form.Group>
+                    <label>Step 3</label>
+                    <Form.Group>
+                        <input name="steps[2]" defaultValue={recipeData.steps[2]} key="step3" placeholder='step3'ref={register()}/>
+                    </Form.Group>
+                    <label>Step 4</label>
+                    <Form.Group>
+                        <input name="steps[3]" defaultValue={recipeData.steps[3]} key="step4" placeholder='step4'ref={register()}/>
+                    </Form.Group>
+                    <label>Step 5</label>
+                    <Form.Group>
+                        <input name="steps[4]" defaultValue={recipeData.steps[4]} key="step5" placeholder='step5'ref={register()}/>
+                    </Form.Group>
                         <legend>Ingredients</legend>
                         <Form.Group>
                             <label>Ingredient 1</label>
-                            <input key="ingredientsName[0].name" name="ingredients[0].name" ref={register()} />
+                            <input key="ingredientsName[0].name" defaultValue={recipeData.ingredients[0].name} name="ingredients[0].name" ref={register()} />
                             <label>Amount </label>
-                            <input type="number" key="ingredientsAmount[0].amount" name="ingredients[0].amount" ref={register({ pattern: /\d+/ })}/>
+                            <input type="number" key="ingredientsAmount[0].amount" defaultValue={recipeData.ingredients[0].amount}  name="ingredients[0].amount" ref={register({ pattern: /\d+/ })}/>
                             {/* {errors.ingredientsAmount[0].amount && 'Please enter number'} */}
                             <label>Unit </label>
-                            <select key="ingredientsUnit[0].unit" name="ingredients[0].unit" ref={register()}>
+                            <select key="ingredientsUnit[0].unit" name="ingredients[0].unit" defaultValue={recipeData.ingredients[0].unit} ref={register()}>
                                 { 
                                 units.map(
                                 (unit,index) => <option key={unit} value={unit}>{unit}</option>
@@ -154,12 +146,12 @@ const RecipeEditForm = (props) => {
                         </Form.Group>
                         <Form.Group>
                             <label>Ingredient 2</label>
-                            <input key="ingredientsName" name="ingredients[1].name" ref={register()} />
+                            <input key="ingredientsName" defaultValue={recipeData.ingredients[1].name} name="ingredients[1].name" ref={register()} />
                             <label>Amount </label>
-                            <input type="number" key="ingredientsAmount" name="ingredients[1].amount" ref={register({ pattern: /\d+/ })}/>
+                            <input type="number" key="ingredientsAmount" defaultValue={recipeData.ingredients[1].amount} name="ingredients[1].amount" ref={register({ pattern: /\d+/ })}/>
                         
                             <label>Unit </label>
-                            <select key="ingredientsUnit" name="ingredients[1].unit" ref={register({ required: true })}>
+                            <select key="ingredientsUnit" name="ingredients[1].unit" defaultValue={recipeData.ingredients[1].unit} ref={register({ required: true })}>
                                 { 
                                 units.map(
                                 (unit,index) => <option key={unit} value={unit}>{unit}</option>
@@ -169,12 +161,12 @@ const RecipeEditForm = (props) => {
                         </Form.Group>
                         <Form.Group>
                             <label>Ingredient 3</label>
-                            <input key="ingredientsName" name="ingredients[2].name" ref={register()} />
+                            <input key="ingredientsName" name="ingredients[2].name" defaultValue={recipeData.ingredients[2].name} ref={register()} />
                             <label>Amount </label>
-                            <input type="number" key="ingredientsAmount" name="ingredients[2].amount" ref={register({ pattern: /\d+/ })}/>
+                            <input type="number" key="ingredientsAmount" name="ingredients[2].amount" defaultValue={recipeData.ingredients[2].amount}ref={register({ pattern: /\d+/ })}/>
                             
                             <label>Unit </label>
-                            <select key="ingredientsUnit" name="ingredients[2].unit" ref={register({ required: true })}>
+                            <select key="ingredientsUnit" name="ingredients[2].unit" defaultValue={recipeData.ingredients[2].unit} ref={register({ required: true })}>
                                 { 
                                 units.map(
                                 (unit,index) => <option key={unit} value={unit}>{unit}</option>
@@ -185,7 +177,7 @@ const RecipeEditForm = (props) => {
                         </Form.Group>
                         <legend>Category</legend>    
                         <Form.Group  >
-                            <select name="category" style={{width: "50%"}}  ref={register({ required: true })}>
+                            <select name="category" defaultValue={recipeData.category} style={{width: "50%"}}  ref={register({ required: true })}>
                             <option key="skin" value="skin">Skin Care</option>
                             <option key="cleaning" value="cleaning">Cleaning</option>
                             <option key="home" value="home">Home Care</option>
