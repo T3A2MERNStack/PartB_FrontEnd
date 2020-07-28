@@ -22,6 +22,7 @@ export default function DisplayRecipePage() {
         },[]);
     // console.log(typeof(data))
     const newArray = Array.from(data)
+    console.log(data.category)
     return (
         <>
             <Container>
