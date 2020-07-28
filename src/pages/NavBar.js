@@ -46,13 +46,13 @@ function LoggedIn() {
           }})
   },[]);
 
-  const getRecipe = (data) => {
-    Axios.get(`http://localhost:4000/recipes/me/${data._id}`)
-    .then((res) => {
-      dispatch({type: "setRecipe", data: res.data})
-      // console.log(store)
-    })
-  }
+    const getRecipe = (data) => {
+      Axios.get(`http://localhost:4000/recipes/me/${data._id}`)
+      .then((res) => {
+        dispatch({type: "setRecipe", data: res.data})
+        // console.log(store)
+      })
+    }
 
 
   const handleLogOut = (e) => {
