@@ -8,13 +8,19 @@ import StateContext from '../store'
 import Axios from 'axios'
 
 const Styles = styled.div`
-  .navbar {
+.dropdown-menu{
+  background-color: #f2f2f2 
+} 
+.dropdown-menu .dropdown-item{
+  padding-left: 10px
+}
+.navbar {
     background-color: white
   }
   a, .navbar-brand, .navbar-nav .nav-link {
     &:hover {
       color: green
-    }
+    } 
   }
   }
 `
@@ -63,8 +69,11 @@ function LoggedIn() {
   } else {
     return (
       <>
+      <Nav.Item>
+                <Nav.Link href="/myrecipes">My Recipes</Nav.Link>
+      </Nav.Item>
         <button onClick={handleLogOut}>Log Out</button>
-     </>
+      </>
     )
   }
 
@@ -87,23 +96,20 @@ const NavBar = () => {
                 <Nav.Link href="/">Welcome</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link href="/display">ALL recipe</Nav.Link>
+                <Nav.Link href="/display">All Recipes</Nav.Link>
               </Nav.Item>
-              <Nav.Item>
-                <div className="dropdown">
-                  <Nav.Link className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <Nav.Item >
+                <div className="dropdown" >
+                  <Nav.Link className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                   Recipe Category
                   </Nav.Link>
-                  <div className="dropdown-menu" aria-labelledby="Recipe Category">
+                  <div className="dropdown-menu" aria-labelledby="Recipe Category" >
                     <Nav.Link className="dropdown-item" href="/skincare">Skincare</Nav.Link>
                     <Nav.Link className="dropdown-item" href="/cleaning">Cleaning</Nav.Link>
                     <Nav.Link className="dropdown-item" href="/homecare">Home Care</Nav.Link>
                     <Nav.Link className="dropdown-item" href="/personalcare">Personal Care</Nav.Link>
                   </div>
                 </div>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/myrecipes">My Recipes</Nav.Link>
               </Nav.Item>
               <Nav.Item >
                 <Nav.Link href="/newrecipe" >New Recipe</Nav.Link>

@@ -61,8 +61,8 @@ const NewRecipeFormView = () => {
     const nextStep3 =  watch("steps[2]")
     const nextStep4 =  watch("steps[3]")
     const tags = ["quick", "zero waste", "plastic free", "low cost", "shea butter", "essential oil"]
-    const units = ["gram", "cut","table spoon","tea spoon", "ounce", "ml","pound", "kg", "inch"]
-
+    const units = ["gram", "cup","tablespoon","teaspoon", "ounce", "ml","pound", "kg", "inch", "L"]
+    
   return ( 
       store.user ? (
         <>
