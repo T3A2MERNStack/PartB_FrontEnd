@@ -113,10 +113,10 @@ const NavBar = () => {
                   Recipe Category
                   </Nav.Link>
                   <div className="dropdown-menu" aria-labelledby="Recipe Category" >
-                    <Nav.Link className="dropdown-item" href="/skincare">Skincare</Nav.Link>
+                    <Nav.Link className="dropdown-item" href="/skin">Skincare</Nav.Link>
                     <Nav.Link className="dropdown-item" href="/cleaning">Cleaning</Nav.Link>
                     <Nav.Link className="dropdown-item" href="/homecare">Home Care</Nav.Link>
-                    <Nav.Link className="dropdown-item" href="/personalcare">Personal Care</Nav.Link>
+                    <Nav.Link className="dropdown-item" href="/personal">Personal Care</Nav.Link>
                   </div>
                 </div>
               </Nav.Item>

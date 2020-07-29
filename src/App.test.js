@@ -62,7 +62,7 @@ it ('login button clicks', () => {
 
 it('includes link to skincare page', () => {                                       
   const wrapper = shallow(<SkincarePage/>);
-  expect(wrapper.find(Link).props().to).toBe('/skincare');
+  expect(wrapper.find(Link).props().to).toBe('/skin');
  });
 
  it("displays steps", () => {

@@ -48,12 +48,12 @@ export default function Home(props) {
                     </Link>
                 </div>
                 <div className="col-6 col-md-3" style={{maxWidth : '80%', padding: 0}}>
-                    <Link to="/personalcare">
+                    <Link to="/personal">
                         <img alt="personal care link" src={ require('./img/personalcare.png') } style={{width: '100%', margin: 0, padding: 0, height: '100%' }}/>
                     </Link>
                 </div>
                 <div className="col-6 col-md-3" style={{maxWidth : '80%', padding: 0}}>
-                    <Link to="/skincare">
+                    <Link to="/skin">
                         <img alt="skin care link" src={ require('./img/skincare.png') } style={{width: '100%', margin: 0, padding: 0 , height: '100%'}}/>
                     </Link>
                 </div>

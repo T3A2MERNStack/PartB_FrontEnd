@@ -9,7 +9,7 @@ import { Container, Row , Col, Jumbotron} from 'react-bootstrap'
 export default function SkincarePage() {
 
     const [data, setData] = useState("")
-    const url = "https://sensationnel-madame-06327.herokuapp.com/"
+    const url = "https://sensationnel-madame-06327.herokuapp.com"
     const category = "skin"
 
     useEffect(() => {
@@ -42,7 +42,7 @@ export default function SkincarePage() {
                         return (
                             <Col sm={12} md={3}>
                             <Link to={`/recipe/${object._id}`} key={`${object._id}`} >
-                                <Card key={`${index}`} style={{margin: 10, width: "250px", height: "400px"}}>
+                                <Card key={`${index}`} style={{margin: 10}}>
                                     <Image alt="product" cloudName="highpitchit" dpr="auto" publicId={object._id} width="150" crop="scale"/>
                                     <Card.Content>
                                         <Card.Header>{object.productName}</Card.Header>
