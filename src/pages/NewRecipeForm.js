@@ -14,6 +14,7 @@ const NewRecipeFormView = () => {
     console.log(store)
 
     const handleImageUpload = (id) => {
+        
         const { files } = document.querySelector('input[type="file"]')
         const formData = new FormData();
         formData.append('file', files[0]);
