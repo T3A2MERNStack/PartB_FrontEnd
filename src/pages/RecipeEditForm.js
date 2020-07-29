@@ -32,30 +32,30 @@ const RecipeEditForm = (props) => {
 
     console.log(recipeData)
 
-    const handleImageUpload = (id) => {
-        const { files } = document.querySelector('input[type="file"]')
-        const formData = new FormData();
-        formData.append('file', files[0]);
-        formData.append('upload_preset', 'hpx42bqi');
-        formData.append('public_id', id)
-        // formData.append('overwrite', true)
-        const options = {
-          method: 'POST',
-          body: formData,
-          overwrite: true
-        };
+    // const handleImageUpload = (id) => {
+    //     const { files } = document.querySelector('input[type="file"]')
+    //     const formData = new FormData();
+    //     formData.append('file', files[0]);
+    //     formData.append('upload_preset', 'hpx42bqi');
+    //     formData.append('public_id', id)
+    //     // formData.append('overwrite', true)
+    //     const options = {
+    //       method: 'POST',
+    //       body: formData,
+    //       overwrite: true
+    //     };
     
-        console.log(files, formData)
-        return fetch('https://api.Cloudinary.com/v1_1/highpitchit/image/upload', options)
-          .then(res => res.json())
-          .then(data => {
-              console.log(data)
-              history.push(`/recipe/${recipe_id}`)
-            // setImageUrl(res.secure_url)
-            // setImageAlt(`An image of ${res.original_filename}`)
-            })
-          .catch(err => console.log(err.message))
-      }
+    //     console.log(files, formData)
+    //     return fetch('https://api.Cloudinary.com/v1_1/highpitchit/image/upload', options)
+    //       .then(res => res.json())
+    //       .then(data => {
+    //           console.log(data)
+    //           history.push(`/recipe/${recipe_id}`)
+    //         // setImageUrl(res.secure_url)
+    //         // setImageAlt(`An image of ${res.original_filename}`)
+    //         })
+    //       .catch(err => console.log(err.message))
+    //   }
 
     const onSubmit = (data) => 
     {
@@ -197,7 +197,7 @@ const RecipeEditForm = (props) => {
                         {/* <Form.Group>
                             <input type="file" key="image" name="image" />
                         </Form.Group> */}
-                            <input className="btn btn-primary" type="submit" onClick = {handleImageUpload}  />
+                            <input className="btn btn-primary" type="submit"  />
                 </Form>
             </Container>
         </>
