@@ -47,8 +47,7 @@ const NewRecipeFormView = () => {
             // console.log(res.data)
             // console.log(res.data.publicId)
             handleImageUpload(res.data.publicId)
-            // addRecipeToUser(res.data._id)
-            history.push('/')
+            history.push(`/recipe/${res.data.publicId}`)
           })
         .catch(err => {
             if(err.response){

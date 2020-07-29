@@ -13,7 +13,7 @@ export default function HomeCarePage() {
     const category = "home"
 
     useEffect(() => {
-        Axios.get(`${url}/recipes/categoryhc/${category}`)
+        Axios.get(`${url}/recipes/category/${category}`)
             .then(res => {
                 setData(res.data)
                 console.log(res.data)
