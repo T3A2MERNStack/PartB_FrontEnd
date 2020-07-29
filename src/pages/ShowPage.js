@@ -9,7 +9,7 @@ import StateContext from '../store'
 export default function ShowPage(props) {
     const [data, setData] = useState(null)
     const {recipe_id} = props.match.params
-    const url = "http://localhost:4000"
+    const url = "https://sensationnel-madame-06327.herokuapp.com/"
     const {store, dispatch} = useContext(StateContext)
     const history = useHistory();
 

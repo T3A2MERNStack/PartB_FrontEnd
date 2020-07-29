@@ -8,7 +8,7 @@ import './styling/welcome.css'
 
 export default function DisplayRecipePage() {
     const [data, setData] = useState("")
-    const url = "http://localhost:4000"
+    const url = "https://sensationnel-madame-06327.herokuapp.com"
 
     useEffect(() => {
         Axios.get(`${url}/recipes/lists`)

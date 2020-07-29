@@ -8,7 +8,7 @@ import StateContext from '../store'
 const RecipeEditForm = (props) => {
     const {store, dispatch} = useContext(StateContext)
     const [errorMessage, setErrorMessage] = useState(false)
-    const url = "http://localhost:4000"
+    const url = "https://sensationnel-madame-06327.herokuapp.com/"
     const { register, handleSubmit, errors, watch } = useForm();
     const history = useHistory()
     const {recipe_id} = props.match.params

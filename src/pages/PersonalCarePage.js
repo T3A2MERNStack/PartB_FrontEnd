@@ -9,7 +9,7 @@ import { Container, Row , Col, Jumbotron} from 'react-bootstrap'
 export default function PersonalcarePage() {
 
     const [data, setData] = useState("")
-    const url = "http://localhost:4000"
+    const url = "https://sensationnel-madame-06327.herokuapp.com/"
     const category = "personal"
 
     useEffect(() => {

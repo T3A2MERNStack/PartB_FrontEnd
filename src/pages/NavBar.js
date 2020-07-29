@@ -47,7 +47,7 @@ function LoggedIn() {
   },[]);
 
     const getRecipe = (data) => {
-      Axios.get(`http://localhost:4000/recipes/me/${data._id}`)
+      Axios.get(`https://sensationnel-madame-06327.herokuapp.com/recipes/me/${data._id}`)
       .then((res) => {
         dispatch({type: "setRecipe", data: res.data})
         // console.log(store)
