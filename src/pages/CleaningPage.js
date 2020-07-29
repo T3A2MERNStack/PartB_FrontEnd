@@ -14,7 +14,7 @@ export default function CleaningPage() {
     const category = "cleaning"
 
     useEffect(() => {
-        Axios.get(`${url}/recipes/categoryc/${category}`)
+        Axios.get(`${url}/recipes/category/${category}`)
             .then(res => {
                 setData(res.data)
                 console.log(res.data)

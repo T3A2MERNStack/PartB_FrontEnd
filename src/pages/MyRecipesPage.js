@@ -26,7 +26,7 @@ export default function MyRecipe() {
         <>
             <Jumbotron className="text-center" style={{ marginTop: '30px'}}>
             <Container>
-                        <h1>Personal Care Recipes</h1>
+                        <h1>My Recipes</h1>
             </Container>
             </Jumbotron>
             <Container>

@@ -13,7 +13,7 @@ export default function PersonalcarePage() {
     const category = "personal"
 
     useEffect(() => {
-        Axios.get(`${url}/recipes/categorypc/${category}`)
+        Axios.get(`${url}/recipes/category/${category}`)
             .then(res => {
                 setData(res.data)
                 console.log(res.data)

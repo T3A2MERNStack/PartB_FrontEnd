@@ -17,13 +17,12 @@ export default function ShowPage(props) {
         Axios.get(`${url}/recipes/get/${recipe_id}`)
             .then(res => {
                 setData(res.data[0])
-                console.log(res.data[0])
-
+                // console.log(res.data[0])
             })
             .catch(error => {
-                                if(error) {
-                                console.log(error.message)
-                              }})
+                if(error) {
+                    console.log(error.message)
+                }})
     },[]);
 
     console.log(store)
@@ -31,8 +30,7 @@ export default function ShowPage(props) {
     const onDelete = () => {
         Axios.delete(`${url}/recipes/delete/${recipe_id}`)
             .then(res => {
-                console.log("worked")
-                history.push('/')
+                history.push('/display')
             })
             .catch (err => {
                 console.log(err)
