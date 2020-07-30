@@ -17,7 +17,6 @@ export default function ShowPage(props) {
         Axios.get(`${url}/recipes/get/${recipe_id}`)
             .then(res => {
                 setData(res.data[0])
-                // console.log(res.data[0])
             })
             .catch(error => {
                 if(error) {
@@ -25,7 +24,7 @@ export default function ShowPage(props) {
                 }})
     },[]);
 
-    console.log(store)
+    // console.log(store)
 
     const onDelete = () => {
         Axios.delete(`${url}/recipes/delete/${recipe_id}`)
@@ -44,9 +43,15 @@ export default function ShowPage(props) {
                 {/* <img alt="product" src={ require('./img/homecare.png') } style={{ width: '100%', outline: "3px solid white", outlineOffset: "-6px"}} /> */}
                 <Image alt="product" cloudName="highpitchit" dpr="auto" publicId={data._id} width="300" crop="scale"/>
                 <div>
-                <Link to={`/recipe/edit/${recipe_id}`}>
-                <Button>EDIT RECIPE</Button></Link>
-                <Button onClick={onDelete}>DELETE RECIPE</Button>
+                
+                { store.user._id === data.userId && 
+                    <Link to={`/recipe/edit/${recipe_id}`}>
+                        <Button>EDIT RECIPE</Button>
+                    </Link>
+                }
+                { store.user._id === data.userId && 
+                    <Button onClick={onDelete}>DELETE RECIPE</Button>
+                }
                 </div>
                 <br></br><div className="text-right">By<Icon name = 'user' />Arisa Okuyama</div>
                 <br></br>
