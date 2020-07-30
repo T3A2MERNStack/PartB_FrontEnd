@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { useForm } from "react-hook-form"
 import Axios from 'axios'
 import { Container, Form, Message,  Checkbox } from 'semantic-ui-react'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import StateContext from '../store'
 
 const NewRecipeFormView = () => {
@@ -40,7 +40,8 @@ const NewRecipeFormView = () => {
     {
         console.log(store.user)
         const userId= store.user._id
-        const addUserData = { ...data, userId: userId}
+        const userName = store.user.username
+        const addUserData = { ...data, userId: userId, userName: userName}
         console.log(addUserData)
          Axios.post(`${url}/recipes/new`, {recipe: addUserData} )
         .then(res => {

@@ -1,21 +1,19 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { useForm, Controller } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import Axios from 'axios'
 import { Container, Form, Message,  Checkbox } from 'semantic-ui-react'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory} from 'react-router-dom'
 import StateContext from '../store'
 
 const RecipeEditForm = (props) => {
-    const {store, dispatch} = useContext(StateContext)
+    const {store} = useContext(StateContext)
     const [errorMessage, setErrorMessage] = useState(false)
     const url = "http://localhost:4000"
-    const { register, handleSubmit, errors, watch } = useForm();
+    const { register, handleSubmit, errors} = useForm();
     const history = useHistory()
     const {recipe_id} = props.match.params
     // console.log(recipe_id)
     const [recipeData, recipeSetData] = useState(null)
-
-    const {control} = useForm();
 
 
     useEffect(() => {

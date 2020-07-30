@@ -1,25 +1,14 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, {  useState, useContext } from 'react'
 import { Image } from 'cloudinary-react';
-import Axios from 'axios'
-import { Card, Icon, Rating } from 'semantic-ui-react'
+import { Card, Rating } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { Container, Row , Col, Jumbotron} from 'react-bootstrap'
 import StateContext from '../store'
 
 export default function MyRecipe() {
-    const {store, dispatch} = useContext(StateContext)
-    const [data, setData] = useState(false)
+    const {store} = useContext(StateContext)
+    const [setData] = useState(false)
     const url = "http://localhost:4000"
-
-    // useEffect(() => {
-    //     console.log(store.recipe)
-    //     setData(store.recipe)
-
-    // },[]);
-    console.log(store.recipe)
-    
-    // setData(store.recipe)
-    // const newArray = Array(store.recipe)
 
     return (
         store.recipe ? (
@@ -42,7 +31,7 @@ export default function MyRecipe() {
                                         <Card.Content>
                                             <Card.Header>{object.productName}</Card.Header>
                                             <Card.Meta>
-                                                <span className='date'>User</span>
+                                                {object.userName && <span className='date'>User Name: {object.userName}</span>}
                                             </Card.Meta>
                                             <Card.Description>
                                                 {object.productSummary}
