@@ -9,7 +9,6 @@ import api from '../api'
 
 export default function DisplayRecipePage() {
     const [data, setData] = useState("")
-    const url = "https://sensationnel-madame-06327.herokuapp.com"
 
     useEffect(() => {
         api.get(`/recipes/lists`)

@@ -10,7 +10,6 @@ import api from '../api'
 export default function HomeCarePage() {
 
     const [data, setData] = useState("")
-    const url = "https://sensationnel-madame-06327.herokuapp.com"
     const category = "home"
 
     useEffect(() => {

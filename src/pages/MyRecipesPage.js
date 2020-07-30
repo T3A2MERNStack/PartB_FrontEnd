@@ -9,7 +9,6 @@ import StateContext from '../store'
 export default function MyRecipe() {
     const {store, dispatch} = useContext(StateContext)
     const [data, setData] = useState(false)
-    const url = "https://sensationnel-madame-06327.herokuapp.com"
 
     // useEffect(() => {
     //     console.log(store.recipe)
