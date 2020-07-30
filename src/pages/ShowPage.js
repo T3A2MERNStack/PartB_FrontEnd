@@ -10,7 +10,7 @@ export default function ShowPage(props) {
     const [data, setData] = useState(null)
     const {recipe_id} = props.match.params
     const url = "http://localhost:4000"
-    const {store, dispatch} = useContext(StateContext)
+    const {store} = useContext(StateContext)
     const history = useHistory();
 
     useEffect(() => {

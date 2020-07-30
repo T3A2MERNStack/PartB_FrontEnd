@@ -1,9 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
-// import {BrowserRouter, Route, Link } from 'react-router-dom'
 import StateContext from '../store'
 import Axios from 'axios'
 
@@ -31,7 +30,7 @@ function LoggedIn() {
 
   useEffect(() => {
     // Update the document title using the browser API
-    Axios.get('https://sensationnel-madame-06327.herokuapp.com/users/me', {
+    Axios.get('http://localhost:4000/users/me', {
         withCredentials: true
       })
         .then(res => {
@@ -57,7 +56,7 @@ function LoggedIn() {
 
   const handleLogOut = (e) => {
     e.preventDefault()
-    Axios.get('https://sensationnel-madame-06327.herokuapp.com/users/logout', {
+    Axios.get('http://localhost:4000/users/logout', {
       withCredentials: true
     })
     .then(() => {
@@ -96,7 +95,7 @@ const NavBar = () => {
         <Navbar expand="lg">
           <Navbar.Brand href="/">
            
-            <img src={ require('./img/logo.png') } style={{width: 200, margin: 0, padding: 0 , height: '100%'}}/>
+            <img alt="logo" src={ require('./img/logo.png') } style={{width: 200, margin: 0, padding: 0 , height: '100%'}}/>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

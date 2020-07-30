@@ -9,7 +9,7 @@ export default function LoginPageView() {
     const [errorMessage, setErrorMessage] = useState(false)
     const { store, dispatch } = useContext(StateContext)
     const { user } = store
-    const url = "https://sensationnel-madame-06327.herokuapp.com"
+    const url = "http://localhost:4000"
     
     useEffect(() => {
         // Update the document title using the browser API
