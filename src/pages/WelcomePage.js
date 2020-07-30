@@ -1,14 +1,11 @@
 import React, { useContext } from 'react'
-// import Axios from 'axios'
-// import { Link } from 'react-router-dom'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
 import StateContext from '../store'
 import { Search, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import './styling/welcome.css'
-// import styled from 'styled-components'
-// import LoginPageView from './LoginPage'
+
 
 export default function Home(props) {
 

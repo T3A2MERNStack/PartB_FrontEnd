@@ -3,16 +3,17 @@ import { Link, useHistory } from 'react-router-dom'
 import Axios from 'axios'
 import StateContext from '../store'
 import { Button, Form, Icon, Message, Container } from 'semantic-ui-react'
+import api from '../api'
 
 export default function SignupPageView() {
     const history = useHistory();
     const [errorMessage, setErrorMessage] = useState(false)
     const { dispatch } = useContext(StateContext)
-    const url = "https://sensationnel-madame-06327.herokuapp.com"
+    // const url = "https://sensationnel-madame-06327.herokuapp.com"
 
     const handleSignUp = (e) => {
         e.preventDefault()
-        Axios.post(`${url}/users/register` , {
+        api.post(`/users/register` , {
           username: e.target[0].value,
           email: e.target[1].value,
           password: e.target[2].value

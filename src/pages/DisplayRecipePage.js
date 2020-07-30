@@ -5,13 +5,14 @@ import { Card, Icon, Rating } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { Container, Row , Col, Jumbotron} from 'react-bootstrap'
 import './styling/welcome.css'
+import api from '../api'
 
 export default function DisplayRecipePage() {
     const [data, setData] = useState("")
     const url = "https://sensationnel-madame-06327.herokuapp.com"
 
     useEffect(() => {
-        Axios.get(`${url}/recipes/lists`)
+        api.get(`/recipes/lists`)
             .then(res => {
                 setData(res.data)
                 console.log(res.data)

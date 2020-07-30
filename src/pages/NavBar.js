@@ -6,6 +6,7 @@ import styled from 'styled-components'
 // import {BrowserRouter, Route, Link } from 'react-router-dom'
 import StateContext from '../store'
 import Axios from 'axios'
+import api from '../api'
 
 const Styles = styled.div`
 .dropdown-menu{
@@ -31,7 +32,7 @@ function LoggedIn() {
 
   useEffect(() => {
     // Update the document title using the browser API
-    Axios.get('https://sensationnel-madame-06327.herokuapp.com/users/me', {
+    api.get('/users/me', {
         withCredentials: true
       })
         .then(res => {
@@ -47,7 +48,7 @@ function LoggedIn() {
   },[]);
 
     const getRecipe = (data) => {
-      Axios.get(`https://sensationnel-madame-06327.herokuapp.com/recipes/me/${data._id}`)
+      api.get(`/recipes/me/${data._id}`)
       .then((res) => {
         dispatch({type: "setRecipe", data: res.data})
         // console.log(store)
@@ -57,7 +58,7 @@ function LoggedIn() {
 
   const handleLogOut = (e) => {
     e.preventDefault()
-    Axios.get('https://sensationnel-madame-06327.herokuapp.com/users/logout', {
+    api.get('/users/logout', {
       withCredentials: true
     })
     .then(() => {

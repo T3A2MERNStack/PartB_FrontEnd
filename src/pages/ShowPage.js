@@ -4,17 +4,18 @@ import { Image } from 'cloudinary-react';
 import Axios from 'axios'
 import { Link, useHistory } from 'react-router-dom'
 import StateContext from '../store'
+import api from '../api'
 
 
 export default function ShowPage(props) {
     const [data, setData] = useState(null)
     const {recipe_id} = props.match.params
-    const url = "https://sensationnel-madame-06327.herokuapp.com"
+    // const url = "https://sensationnel-madame-06327.herokuapp.com"
     const {store, dispatch} = useContext(StateContext)
     const history = useHistory();
 
     useEffect(() => {
-        Axios.get(`${url}/recipes/get/${recipe_id}`)
+        api.get(`/recipes/get/${recipe_id}`)
             .then(res => {
                 setData(res.data[0])
                 // console.log(res.data[0])
@@ -28,7 +29,7 @@ export default function ShowPage(props) {
     console.log(store)
 
     const onDelete = () => {
-        Axios.delete(`${url}/recipes/delete/${recipe_id}`)
+        api.delete(`/recipes/delete/${recipe_id}`)
             .then(res => {
                 history.push('/display')
             })

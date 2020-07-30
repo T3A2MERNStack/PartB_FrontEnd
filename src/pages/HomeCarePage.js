@@ -4,6 +4,7 @@ import Axios from 'axios'
 import { Card, Icon, Rating } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { Container, Row , Col, Jumbotron} from 'react-bootstrap'
+import api from '../api'
 
 
 export default function HomeCarePage() {
@@ -13,7 +14,7 @@ export default function HomeCarePage() {
     const category = "home"
 
     useEffect(() => {
-        Axios.get(`${url}/recipes/category/${category}`)
+        api.get(`/recipes/category/${category}`)
             .then(res => {
                 setData(res.data)
                 console.log(res.data)

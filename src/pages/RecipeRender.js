@@ -4,6 +4,7 @@ import Axios from 'axios'
 import { Card, Icon, Rating } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { Container, Row , Col} from 'react-bootstrap'
+import api from '../api'
 
 export default function RecipePage() {
     const [data, setData] = useState("")

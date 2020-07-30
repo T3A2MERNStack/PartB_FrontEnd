@@ -5,16 +5,16 @@ import { Card, Icon, Rating } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { Container, Row , Col} from 'react-bootstrap'
 import Jumbotron from 'react-bootstrap/Jumbotron'
-
+import api from '../api'
 
 export default function CleaningPage() {
 
     const [data, setData] = useState("")
-    const url = "https://sensationnel-madame-06327.herokuapp.com"
+    // const url = "https://sensationnel-madame-06327.herokuapp.com"
     const category = "cleaning"
 
     useEffect(() => {
-        Axios.get(`${url}/recipes/category/${category}`)
+        api.get(`/recipes/category/${category}`)
             .then(res => {
                 setData(res.data)
                 console.log(res.data)

@@ -4,11 +4,12 @@ import Axios from 'axios'
 import { Container, Form, Message,  Checkbox } from 'semantic-ui-react'
 import { useHistory, Link } from 'react-router-dom'
 import StateContext from '../store'
+import api from '../api'
 
 const RecipeEditForm = (props) => {
     const {store, dispatch} = useContext(StateContext)
     const [errorMessage, setErrorMessage] = useState(false)
-    const url = "https://sensationnel-madame-06327.herokuapp.com"
+    // const url = "https://sensationnel-madame-06327.herokuapp.com"
     const { register, handleSubmit, errors, watch } = useForm();
     const history = useHistory()
     const {recipe_id} = props.match.params
@@ -19,7 +20,7 @@ const RecipeEditForm = (props) => {
 
 
     useEffect(() => {
-        Axios.get(`${url}/recipes/get/${recipe_id}`)
+        api.get(`/recipes/get/${recipe_id}`)
             .then(res => {
                 recipeSetData(res.data[0])
                 // console.log(res.data)
@@ -61,7 +62,7 @@ const RecipeEditForm = (props) => {
     {
         const userId= store.user._id
         const addUserData = { ...data, userId: userId}
-         Axios.put(`${url}/recipes/edit/${recipe_id}`, {recipe: addUserData} )
+         api.put(`/recipes/edit/${recipe_id}`, {recipe: addUserData} )
         .then(res => {
             // handleImageUpload(res.data.publicId)
             // addRecipeToUser(res.data._id)

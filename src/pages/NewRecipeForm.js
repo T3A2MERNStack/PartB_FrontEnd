@@ -4,11 +4,12 @@ import Axios from 'axios'
 import { Container, Form, Message,  Checkbox } from 'semantic-ui-react'
 import { useHistory, Link } from 'react-router-dom'
 import StateContext from '../store'
+import api from '../api'
 
 const NewRecipeFormView = () => {
     const {store, dispatch} = useContext(StateContext)
     const [errorMessage, setErrorMessage] = useState(false)
-    const url = "https://sensationnel-madame-06327.herokuapp.com"
+    // const url = "https://sensationnel-madame-06327.herokuapp.com"
     const { register, handleSubmit, errors, watch } = useForm();
     const history = useHistory()
     console.log(store)
@@ -42,7 +43,7 @@ const NewRecipeFormView = () => {
         const userId= store.user._id
         const addUserData = { ...data, userId: userId}
         console.log(addUserData)
-         Axios.post(`${url}/recipes/new`, {recipe: addUserData} )
+         api.post(`/recipes/new`, {recipe: addUserData} )
         .then(res => {
             // console.log(res.data)
             // console.log(res.data.publicId)
