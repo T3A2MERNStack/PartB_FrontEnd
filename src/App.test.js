@@ -3,19 +3,16 @@ import React from 'react';
 import App from './App';
 import Enzyme, { shallow, mount } from "enzyme"
 import EnzymeAdapter from 'enzyme-adapter-react-16'
-import Display from './pages/DisplayRecipePage'
-
-import CleaningPage from './pages/CleaningPage'
-import HomeCarePage from './pages/HomeCarePage'
-import SkincarePage from './pages/SkincarePage'
-import sinon from 'sinon'
-import { Link } from 'react-router';
-import ShowPage from './pages/ShowPage'
-import SignupPageView from './pages/SignupPage'
-import NewRecipeView from './pages/candelete'
-import NavBar from './pages/NavBar'
-import WelcomePage from './pages/WelcomePage'
-import NoMatch from './pages/NoMatch'
+import Display from './component/DisplayRecipePage'
+import CleaningPage from './component/CleaningPage'
+import HomeCarePage from './component/HomeCarePage'
+import SkincarePage from './component/SkincarePage'
+import ShowPage from './component/ShowPage'
+import SignupPageView from './component/SignupPage'
+import NewRecipeView from './component/candelete'
+import NavBar from './component/NavBar'
+import WelcomePage from './component/WelcomePage'
+import NoMatch from './component/NoMatch'
 
 
 Enzyme.configure({ adapter: new EnzymeAdapter() })
