@@ -1,22 +1,17 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { useForm, Controller } from "react-hook-form"
-import Axios from 'axios'
+import { useForm } from "react-hook-form"
 import { Container, Form, Message,  Checkbox } from 'semantic-ui-react'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory} from 'react-router-dom'
 import StateContext from '../store'
 import api from '../api'
 
 const RecipeEditForm = (props) => {
-    const {store, dispatch} = useContext(StateContext)
+    const {store} = useContext(StateContext)
     const [errorMessage, setErrorMessage] = useState(false)
-    // const url = "https://sensationnel-madame-06327.herokuapp.com"
-    const { register, handleSubmit, errors, watch } = useForm();
+    const { register, handleSubmit, errors} = useForm();
     const history = useHistory()
     const {recipe_id} = props.match.params
-    // console.log(recipe_id)
     const [recipeData, recipeSetData] = useState(null)
-
-    const {control} = useForm();
 
 
     useEffect(() => {
@@ -30,42 +25,13 @@ const RecipeEditForm = (props) => {
                                 console.log(error.message)
                               }})
     },[]);
-
     console.log(recipeData)
 
-    // const handleImageUpload = (id) => {
-    //     const { files } = document.querySelector('input[type="file"]')
-    //     const formData = new FormData();
-    //     formData.append('file', files[0]);
-    //     formData.append('upload_preset', 'hpx42bqi');
-    //     formData.append('public_id', id)
-    //     // formData.append('overwrite', true)
-    //     const options = {
-    //       method: 'POST',
-    //       body: formData,
-    //       overwrite: true
-    //     };
-    
-    //     console.log(files, formData)
-    //     return fetch('https://api.Cloudinary.com/v1_1/highpitchit/image/upload', options)
-    //       .then(res => res.json())
-    //       .then(data => {
-    //           console.log(data)
-    //           history.push(`/recipe/${recipe_id}`)
-    //         // setImageUrl(res.secure_url)
-    //         // setImageAlt(`An image of ${res.original_filename}`)
-    //         })
-    //       .catch(err => console.log(err.message))
-    //   }
-
-    const onSubmit = (data) => 
-    {
+    const onSubmit = (data) => {
         const userId= store.user._id
         const addUserData = { ...data, userId: userId}
          api.put(`/recipes/edit/${recipe_id}`, {recipe: addUserData} )
         .then(res => {
-            // handleImageUpload(res.data.publicId)
-            // addRecipeToUser(res.data._id)
             history.push(`/recipe/${recipe_id}`)
           })
         .catch(err => {
@@ -77,7 +43,6 @@ const RecipeEditForm = (props) => {
             }
         })
     };
-    // console.log(store)
     const tags = ["quick", "zero waste", "plastic free", "low cost", "shea butter", "essential oil"]
     const units = ["gram", "cut","table spoon","tea spoon", "ounce", "ml","pound", "kg", "inch"]
 
@@ -89,7 +54,6 @@ const RecipeEditForm = (props) => {
                             attached
                             style= {{backgroundColor: '#2e8b57', textAlign: 'center', fontSize: '2em'}}
                             header= 'Create new recipe'
-                            // content='Fill out the form below to sign-up for a new account'
                             />
                 {errorMessage ? ( <h3>{errorMessage}</h3> ) : (null) }
                 <Form style={{ padding : '10%'}} className='attached fluid segment'  onSubmit={handleSubmit(onSubmit)}>
@@ -136,7 +100,6 @@ const RecipeEditForm = (props) => {
                             <input key="ingredientsName[0].name" defaultValue={recipeData.ingredients[0].name} name="ingredients[0].name" ref={register()} />
                             <label>Amount </label>
                             <input type="number" key="ingredientsAmount[0].amount" defaultValue={recipeData.ingredients[0].amount}  name="ingredients[0].amount" ref={register({ pattern: /\d+/ })}/>
-                            {/* {errors.ingredientsAmount[0].amount && 'Please enter number'} */}
                             <label>Unit </label>
                             <select key="ingredientsUnit[0].unit" name="ingredients[0].unit" defaultValue={recipeData.ingredients[0].unit} ref={register()}>
                                 { 
@@ -195,9 +158,6 @@ const RecipeEditForm = (props) => {
                             )
                             }    
                         </Form.Group>
-                        {/* <Form.Group>
-                            <input type="file" key="image" name="image" />
-                        </Form.Group> */}
                             <input className="btn btn-primary" type="submit"  />
                 </Form>
             </Container>

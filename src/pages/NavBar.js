@@ -1,9 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
-// import {BrowserRouter, Route, Link } from 'react-router-dom'
 import StateContext from '../store'
 import Axios from 'axios'
 import api from '../api'
@@ -97,7 +96,7 @@ const NavBar = () => {
         <Navbar expand="lg">
           <Navbar.Brand href="/">
            
-            <img src={ require('./img/logo.png') } style={{width: 200, margin: 0, padding: 0 , height: '100%'}}/>
+            <img alt="logo" src={ require('./img/logo.png') } style={{width: 200, margin: 0, padding: 0 , height: '100%'}}/>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

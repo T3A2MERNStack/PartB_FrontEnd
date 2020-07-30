@@ -25,7 +25,8 @@ export default function Home(props) {
             <Jumbotron style={{marginTop : '30px'}}>
                 <Container>
                     <h1>Welcome to EcoA</h1>
-                    <p> Your resource for zero waste home products </p>
+                    <p> A collection of free zero waste recipes for reducing your environmental impact. </p>
+                    <p>❤</p>
                 </Container>
             </Jumbotron>
         </div>

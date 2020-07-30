@@ -1,6 +1,5 @@
 import React, { useState,  useContext, useEffect } from 'react'
 import {useHistory } from 'react-router-dom'
-import Axios from 'axios'
 import StateContext from '../store'
 import { Button, Form, Container, Message, Icon } from 'semantic-ui-react'
 import api from '../api'

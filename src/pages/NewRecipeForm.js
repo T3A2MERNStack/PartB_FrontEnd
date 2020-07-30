@@ -1,15 +1,13 @@
 import React, { useState, useContext } from 'react'
 import { useForm } from "react-hook-form"
-import Axios from 'axios'
-import { Container, Form, Message,  Checkbox } from 'semantic-ui-react'
-import { useHistory, Link } from 'react-router-dom'
+import { Container, Form, Message,  Checkbox, } from 'semantic-ui-react'
+import { useHistory } from 'react-router-dom'
 import StateContext from '../store'
 import api from '../api'
 
 const NewRecipeFormView = () => {
     const {store, dispatch} = useContext(StateContext)
     const [errorMessage, setErrorMessage] = useState(false)
-    // const url = "https://sensationnel-madame-06327.herokuapp.com"
     const { register, handleSubmit, errors, watch } = useForm();
     const history = useHistory()
     console.log(store)
@@ -41,7 +39,8 @@ const NewRecipeFormView = () => {
     {
         console.log(store.user)
         const userId= store.user._id
-        const addUserData = { ...data, userId: userId}
+        const userName = store.user.username
+        const addUserData = { ...data, userId: userId, userName: userName}
         console.log(addUserData)
          api.post(`/recipes/new`, {recipe: addUserData} )
         .then(res => {
@@ -145,14 +144,11 @@ const NewRecipeFormView = () => {
                             <input key="ingredientsName[0].name" name="ingredients[0].name" ref={register({ required: true })} />
                             <label>Amount </label>
                             <input type="number" key="ingredientsAmount[0].amount" name="ingredients[0].amount" ref={register({ pattern: /\d+/ })}/>
-                            {/* {errors.ingredientsAmount[0].amount && 'Please enter number'} */}
                             <label>Unit </label>
                             <select key="ingredientsUnit[0].unit" name="ingredients[0].unit" ref={register({ required: true })}>
-                                { 
-                                units.map(
+                                {units.map(
                                 (unit,index) => <option key={unit} value={unit}>{unit}</option>
-                                )
-                                }
+                                )}
                             </select>
                         </Form.Group>
                         <Form.Group>
@@ -163,11 +159,9 @@ const NewRecipeFormView = () => {
                         
                             <label>Unit </label>
                             <select key="ingredientsUnit" name="ingredients[1].unit" ref={register({ required: true })}>
-                                { 
-                                units.map(
+                                { units.map(
                                 (unit,index) => <option key={unit} value={unit}>{unit}</option>
-                                )
-                                }
+                                )}
                             </select>
                         </Form.Group>
                         <Form.Group>
